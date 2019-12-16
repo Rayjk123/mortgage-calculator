@@ -4,15 +4,12 @@ import { Text, View } from 'react-native';
 import NumberTextInput from './NumberTextInput.js';
 
 const FormLine = ({label, value, valueUpdateCB}) => {
-    console.log('VALUE UPDATE CB IN FORM LINE' + valueUpdateCB);
-    console.log('VALUE UPDATE CB IN FORM LINE' + typeof valueUpdateCB);
+    //console.log('VALUE UPDATE CB IN FORM LINE ' + valueUpdateCB);
+    //console.log('VALUE UPDATE CB IN FORM LINE ' + typeof valueUpdateCB);
     const removeNonNumericValues = (label, value) => {
         if (!value) {
             return;
         }
-
-        console.log('Remove Vlues being called');
-        console.log('gets here???');
 
         const regexNotNumberOrDot = /[^0-9.]/g;
         const regexLeadingNumber = /^0+/;

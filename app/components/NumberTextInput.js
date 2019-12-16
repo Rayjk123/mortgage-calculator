@@ -3,21 +3,18 @@ import PropTypes from "prop-types";
 import { TextInput, View } from 'react-native';
 
 const NumberTextInput = ({label, value, valueUpdateCB}) => {
-    function removeNonNumericValues(value, valueUpdateCB) {
-        if (!value) {
-            return;
-        }
-
-        console.log('NumberTextInput Value: ' + value);
-        console.log('NumberTextInput Value: ' + value);
+    //console.log(label + " " + value + " @ " + valueUpdateCB);
+    //Label = mortgage years, value = num, valueUpdateCB = function
+    function removeNonNumericValues(label, value, valueUpdateCB) {
+        if (!value)return;
 
         const regexNotNumberOrDot = /[^0-9.]/g;
         const regexLeadingNumber = /^0+/;
 
-        value.replace(regexNotNumberOrDot, '');
-        value.replace(regexLeadingNumber, '');
+        value.replace(regexNotNumberOrDot);
+        value.replace(regexLeadingNumber);
 
-        return valueUpdateCB(value);
+        valueUpdateCB(label, value);
     }
 
     return (
