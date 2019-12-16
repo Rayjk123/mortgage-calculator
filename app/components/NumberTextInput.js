@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import { TextInput, View } from 'react-native';
+import {StyleSheet, TextInput, View } from 'react-native';
 
 const NumberTextInput = ({label, value, valueUpdateCB}) => {
     //console.log(label + " " + value + " @ " + valueUpdateCB);
@@ -17,9 +17,29 @@ const NumberTextInput = ({label, value, valueUpdateCB}) => {
         return valueUpdateCB(label, value);
     }
 
+    const numStyle = StyleSheet.create({
+        numContainer: {
+            backgroundColor:    'white',
+            width:              '26.333%',
+            display:            'flex',
+            position:           'relative',
+            flexDirection:      'row',
+            shadowColor:        'black',
+            shadowOffset:       {width:0, height:0},
+            shadowOpacity:      0.45,
+            shadowRadius:       2,
+        },
+        numFont:{
+            fontSize:           30,
+            paddingLeft:        5,
+            width:              '100%',
+        }
+    });
+
     return (
-        <View>
+        <View style={numStyle.numContainer}>
             <TextInput
+                style={numStyle.numFont}
                 value={value.toString()}
                 onChangeText={text => removeNonNumericValues(label, text, valueUpdateCB)}
                 keyboardType={'numeric'}
