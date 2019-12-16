@@ -11,10 +11,10 @@ const NumberTextInput = ({label, value, valueUpdateCB}) => {
         const regexNotNumberOrDot = /[^0-9.]/g;
         const regexLeadingNumber = /^0+/;
 
-        value.replace(regexNotNumberOrDot);
-        value.replace(regexLeadingNumber);
+        value.replace(regexNotNumberOrDot, '');
+        value.replace(regexLeadingNumber, '');
 
-        valueUpdateCB(label, value);
+        return valueUpdateCB(label, value);
     }
 
     return (
