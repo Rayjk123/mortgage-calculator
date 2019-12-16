@@ -27,6 +27,10 @@ export const inputStyle = StyleSheet.create({
     position: "absolute",
     top: 2,
     left: 18,
+    fontSize: 16,
+    fontWeight: "700",
+    letterSpacing: 0.25,
+    lineHeight: 18,
     backgroundColor: "white",
     zIndex: 2
   }
@@ -39,9 +43,12 @@ export const numStyle = StyleSheet.create({
     display: "flex",
     position: "relative",
     flexDirection: "row",
+    borderColor: "gray",
+    borderWidth: 0.25,
+    borderStyle: "solid",
     shadowColor: "black",
     shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.45,
+    shadowOpacity: 0.6,
     shadowRadius: 2,
     paddingTop: 4,
     paddingBottom: 4
