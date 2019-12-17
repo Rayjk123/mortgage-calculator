@@ -5,7 +5,7 @@ export const bodyStyle = StyleSheet.create({
     flex: 1,
     backgroundColor: "#faf",
     alignItems: "center",
-    justifyContent: "center"
+    paddingTop: "10%"
   }
 });
 export const inputStyle = StyleSheet.create({
