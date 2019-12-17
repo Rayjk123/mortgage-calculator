@@ -9,15 +9,14 @@ const FormLine = ({ label, value, valueUpdateCB }) => {
   //console.log('VALUE UPDATE CB IN FORM LINE ' + typeof valueUpdateCB);
   const removeNonNumericValues = (label, value) => {
     if (!value) {
-      return;
+      value = 0;
+    } else {
+      const regexNotNumberOrDot = /[^0-9.]/g;
+      const regexLeadingNumber = /^0+/;
+
+      value = value.replace(regexNotNumberOrDot, "");
+      value = value.replace(regexLeadingNumber, "");
     }
-
-    const regexNotNumberOrDot = /[^0-9.]/g;
-    const regexLeadingNumber = /^0+/;
-
-    value.replace(regexNotNumberOrDot, "");
-    value.replace(regexLeadingNumber, "");
-
     valueUpdateCB(label, value);
   };
 

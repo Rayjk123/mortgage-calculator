@@ -50,7 +50,6 @@ MortgageFormContainer.propTypes = {
 };
 
 const mapStateToProps = state => {
-  console.log("state: " + state);
   console.log("state: " + JSON.stringify(state));
   return {
     formData: state.formData

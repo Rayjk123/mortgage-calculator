@@ -7,14 +7,15 @@ const NumberTextInput = ({ label, value, valueUpdateCB }) => {
   //console.log(label + " " + value + " @ " + valueUpdateCB);
   //Label = mortgage years, value = num, valueUpdateCB = function
   function removeNonNumericValues(label, value, valueUpdateCB) {
-    if (!value) return;
+    if (!value) {
+      value = 0;
+    } else {
+      const regexNotNumberOrDot = /[^0-9.]/g;
+      const regexLeadingNumber = /^0+/;
 
-    const regexNotNumberOrDot = /[^0-9.]/g;
-    const regexLeadingNumber = /^0+/;
-
-    value.replace(regexNotNumberOrDot, "");
-    value.replace(regexLeadingNumber, "");
-
+      value = value.replace(regexNotNumberOrDot, "");
+      value = value.replace(regexLeadingNumber, "");
+    }
     return valueUpdateCB(label, value);
   }
 
@@ -27,6 +28,7 @@ const NumberTextInput = ({ label, value, valueUpdateCB }) => {
           removeNonNumericValues(label, text, valueUpdateCB)
         }
         keyboardType={"numeric"}
+        returnKeyType={"done"}
       />
     </View>
   );
