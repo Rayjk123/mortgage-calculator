@@ -1,12 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { StyleSheet, Text, View } from "react-native";
-import NumberTextInput from "./NumberTextInput.js";
-import { inputStyle } from "../Styles/style";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Text, View } from 'react-native';
+import NumberTextInput from './NumberTextInput';
+import { inputStyle } from '../Styles/style';
 
 const FormLine = ({ label, value, valueUpdateCB }) => {
-  //console.log('VALUE UPDATE CB IN FORM LINE ' + valueUpdateCB);
-  //console.log('VALUE UPDATE CB IN FORM LINE ' + typeof valueUpdateCB);
+  // console.log('VALUE UPDATE CB IN FORM LINE ' + valueUpdateCB);
+  // console.log('VALUE UPDATE CB IN FORM LINE ' + typeof valueUpdateCB);
   const removeNonNumericValues = (label, value) => {
     if (!value) {
       value = 0;
@@ -14,8 +14,8 @@ const FormLine = ({ label, value, valueUpdateCB }) => {
       const regexNotNumberOrDot = /[^0-9.]/g;
       const regexLeadingNumber = /^0+/;
 
-      value = value.replace(regexNotNumberOrDot, "");
-      value = value.replace(regexLeadingNumber, "");
+      value = value.replace(regexNotNumberOrDot, '');
+      value = value.replace(regexLeadingNumber, '');
     }
     valueUpdateCB(label, value);
   };
@@ -35,7 +35,7 @@ const FormLine = ({ label, value, valueUpdateCB }) => {
 FormLine.propTypes = {
   label: PropTypes.string.isRequired,
   value: PropTypes.number.isRequired,
-  valueUpdateCB: PropTypes.func.isRequired
+  valueUpdateCB: PropTypes.func.isRequired,
 };
 
 export default FormLine;
