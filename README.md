@@ -10,3 +10,7 @@ Console.logs will show up in terminal. Hot refresh on saves
 1. Run `npm start` to run locally.
 2. Head to the Expo DevTools running locally which should automatically open
 3. 🍎 On your iPhone or iPad, open the default Apple "Camera" app and scan the QR code you see in the terminal or in Expo Dev Tools.
+
+## ESLint
+The project enforces ESLint. To validate that your ESLint is correct run `npm run eslint` to validate 
+and if you want to autofix some basic issues use `npm run eslint-fix`

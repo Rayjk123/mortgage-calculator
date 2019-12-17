@@ -1,14 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
-import FormLine from "../components/FormLine";
-import { StyleSheet, Text, View } from "react-native";
-import { formUpdate } from "../actions/index";
-import { connect } from "react-redux";
-import { bodyStyle } from "../Styles/style";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { View } from 'react-native';
+import { connect } from 'react-redux';
+import FormLine from '../components/FormLine';
+import formUpdate from '../actions/index';
+import { bodyStyle } from '../Styles/style';
 
 const MortgageFormContainer = ({ formData, formUpdate }) => {
   const valueUpdateCB = (label, value) => {
-    console.log("Label: " + label + " | value: " + value);
+    console.log(`Label: ${label} | value: ${value}`);
     if (!isNaN(value)) {
       formUpdate(label, value);
     }
@@ -37,32 +37,30 @@ const MortgageFormContainer = ({ formData, formUpdate }) => {
 
 const formPropType = PropTypes.shape({
   label: PropTypes.string.isRequired,
-  value: PropTypes.number.isRequired
+  value: PropTypes.number.isRequired,
 });
 
 MortgageFormContainer.propTypes = {
   formData: PropTypes.shape({
     mortgageAmount: formPropType,
     interestRate: formPropType,
-    mortgagePeriod: formPropType
+    mortgagePeriod: formPropType,
   }).isRequired,
-  formUpdate: PropTypes.func.isRequired
+  formUpdate: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => {
-  console.log("state: " + JSON.stringify(state));
+const mapStateToProps = (state) => {
+  console.log(`state: ${JSON.stringify(state)}`);
   return {
-    formData: state.formData
+    formData: state.formData,
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    formUpdate: (label, value) => dispatch(formUpdate(label, value))
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  formUpdate: (label, value) => dispatch(formUpdate(label, value)),
+});
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(MortgageFormContainer);
