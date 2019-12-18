@@ -16,6 +16,7 @@ const FormLine = ({ label, value, valueUpdateCB }) => {
 
       value = value.replace(regexNotNumberOrDot, '');
       value = value.replace(regexLeadingNumber, '');
+      console.log('test');
     }
     valueUpdateCB(label, value);
   };
