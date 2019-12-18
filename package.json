@@ -6,8 +6,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "eslint": "npx eslint --ext .jsx,.js .",
-    "eslint-fix": "npx eslint --ext .jsx,.js . --fix"
+    "eslint": "npx eslint . --ext .jsx,.js",
+    "eslint-fix": "npx eslint . --ext .jsx,.js --fix"
   },
   "dependencies": {
     "expo": "~36.0.0",
