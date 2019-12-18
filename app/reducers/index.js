@@ -14,6 +14,10 @@ const initialState = {
       label: constants.MORTGAGE_YEARS,
       value: 0,
     },
+    total: {
+      label: constants.MORTGAGE_TOTAL_COST,
+      value: 0,
+    },
   },
 };
 
@@ -36,8 +40,7 @@ export default function mainReducer(state = initialState, action) {
   switch (action.type) {
     case constants.FORM_UPDATE: {
       const label = getLabelToUpdate(
-        Object.keys(state.formData)
-          .sort(),
+        Object.keys(state.formData).sort(),
         action.label,
       );
       return {

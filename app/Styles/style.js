@@ -59,3 +59,37 @@ export const numStyle = StyleSheet.create({
     width: '100%',
   },
 });
+
+export const totalStyle = StyleSheet.create({
+  container: {
+    marginTop: 16,
+    backgroundColor: 'white',
+    paddingTop: 12,
+    paddingBottom: 12,
+    paddingLeft: '3.333%',
+    paddingRight: '3.333%',
+    width: '80%',
+  },
+  textLabel: {
+    position: 'absolute',
+    backgroundColor: 'white',
+    fontSize: 16,
+    fontWeight: '700',
+    zIndex: 2,
+    top: 2,
+    left: 16,
+  },
+  numFont: {
+    position: 'relative',
+    fontSize: 30,
+    paddingLeft: 5,
+    width: '100%',
+    paddingTop: 4,
+    paddingBottom: 4,
+    display: 'flex',
+    flexDirection: 'row',
+    borderColor: 'gray',
+    borderWidth: 1,
+    borderStyle: 'solid',
+  },
+});
