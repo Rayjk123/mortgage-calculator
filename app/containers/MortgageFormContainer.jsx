@@ -57,6 +57,7 @@ MortgageFormContainer.propTypes = {
     mortgageAmount: formPropType,
     interestRate: formPropType,
     mortgagePeriod: formPropType,
+    total: formPropType,
   }).isRequired,
   formUpdate: PropTypes.func.isRequired,
 };

@@ -24,9 +24,9 @@ const NumberTextInput = ({ label, value, valueUpdateCB }) => {
       <TextInput
         style={numStyle.numFont}
         value={value.toString()}
-        onChangeText={text =>
-          removeNonNumericValues(label, text, valueUpdateCB)
-        }
+        onChangeText={text => {
+          removeNonNumericValues(label, text, valueUpdateCB);
+        }}
         step={0.1}
         keyboardType="numeric"
         returnKeyType="done"
