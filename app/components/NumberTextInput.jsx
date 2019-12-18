@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { TextInput, View } from 'react-native';
-import { numStyle } from '../Styles/style';
+import React from "react";
+import PropTypes from "prop-types";
+import { TextInput, View } from "react-native";
+import { numStyle } from "../Styles/style";
 
 const NumberTextInput = ({ label, value, valueUpdateCB }) => {
   // console.log(label + " " + value + " @ " + valueUpdateCB);
@@ -13,8 +13,8 @@ const NumberTextInput = ({ label, value, valueUpdateCB }) => {
       const regexNotNumberOrDot = /[^0-9.]/g;
       const regexLeadingNumber = /^0+/;
 
-      value = value.replace(regexNotNumberOrDot, '');
-      value = value.replace(regexLeadingNumber, '');
+      value = value.replace(regexNotNumberOrDot, "");
+      value = value.replace(regexLeadingNumber, "");
     }
     return valueUpdateCB(label, value);
   }
@@ -24,7 +24,10 @@ const NumberTextInput = ({ label, value, valueUpdateCB }) => {
       <TextInput
         style={numStyle.numFont}
         value={value.toString()}
-        onChangeText={(text) => removeNonNumericValues(label, text, valueUpdateCB)}
+        onChangeText={text =>
+          removeNonNumericValues(label, text, valueUpdateCB)
+        }
+        step={0.1}
         keyboardType="numeric"
         returnKeyType="done"
       />
@@ -35,7 +38,7 @@ const NumberTextInput = ({ label, value, valueUpdateCB }) => {
 NumberTextInput.propTypes = {
   label: PropTypes.string.isRequired,
   value: PropTypes.number.isRequired,
-  valueUpdateCB: PropTypes.func.isRequired,
+  valueUpdateCB: PropTypes.func.isRequired
 };
 
 export default NumberTextInput;

@@ -1,10 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { View } from 'react-native';
-import { connect } from 'react-redux';
-import FormLine from '../components/FormLine';
-import formUpdate from '../actions/index';
-import { bodyStyle } from '../Styles/style';
+import React from "react";
+import PropTypes from "prop-types";
+import { View } from "react-native";
+import { connect } from "react-redux";
+import FormLine from "../components/FormLine";
+import TotalContainer from "../components/TotalContainer";
+import formUpdate from "../actions/index";
+import { bodyStyle } from "../Styles/style";
+import { getPlatformOrientationLockAsync } from "expo/build/ScreenOrientation/ScreenOrientation";
 
 const MortgageFormContainer = ({ formData, formUpdate }) => {
   const valueUpdateCB = (label, value) => {
@@ -13,6 +15,16 @@ const MortgageFormContainer = ({ formData, formUpdate }) => {
       formUpdate(label, value);
     }
   };
+  function getTotalCost() {
+    const R = formData.interestRate.value / 100 / 12;
+    if (R == 0) return 0;
+    const P = formData.mortgageAmount.value;
+    const N = formData.mortgagePeriod.value * 12;
+    if (N == 0) return 0;
+    const Numerator = R * P;
+    const Denominator = 1 - Math.pow(1 + R, N * -1);
+    return ((Numerator / Denominator) * N).toFixed(2);
+  }
 
   return (
     <View style={bodyStyle.container}>
@@ -31,36 +43,37 @@ const MortgageFormContainer = ({ formData, formUpdate }) => {
         value={formData.mortgagePeriod.value}
         valueUpdateCB={valueUpdateCB}
       />
+      <TotalContainer label={formData.total.label} value={getTotalCost()} />
     </View>
   );
 };
 
 const formPropType = PropTypes.shape({
   label: PropTypes.string.isRequired,
-  value: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired
 });
 
 MortgageFormContainer.propTypes = {
   formData: PropTypes.shape({
     mortgageAmount: formPropType,
     interestRate: formPropType,
-    mortgagePeriod: formPropType,
+    mortgagePeriod: formPropType
   }).isRequired,
-  formUpdate: PropTypes.func.isRequired,
+  formUpdate: PropTypes.func.isRequired
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   console.log(`state: ${JSON.stringify(state)}`);
   return {
-    formData: state.formData,
+    formData: state.formData
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  formUpdate: (label, value) => dispatch(formUpdate(label, value)),
+const mapDispatchToProps = dispatch => ({
+  formUpdate: (label, value) => dispatch(formUpdate(label, value))
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(MortgageFormContainer);

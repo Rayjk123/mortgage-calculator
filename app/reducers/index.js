@@ -1,20 +1,24 @@
-import * as constants from '../constants/constants';
+import * as constants from "../constants/constants";
 
 const initialState = {
   formData: {
     mortgageAmount: {
       label: constants.MORTGAGE_AMOUNT,
-      value: 0,
+      value: 0
     },
     interestRate: {
       label: constants.MORTGAGE_INTEREST,
-      value: 0,
+      value: 0
     },
     mortgagePeriod: {
       label: constants.MORTGAGE_YEARS,
-      value: 0,
+      value: 0
     },
-  },
+    total: {
+      label: constants.MORTGAGE_TOTAL_COST,
+      value: 0
+    }
+  }
 };
 
 function getLabelToUpdate(labelArray, labelStr) {
@@ -26,19 +30,18 @@ function getLabelToUpdate(labelArray, labelStr) {
     case constants.MORTGAGE_YEARS:
       return labelArray[2];
     default:
-      console.log('Nani?');
+      console.log("Nani?");
       break;
   }
-  return '';
+  return "";
 }
 
 export default function mainReducer(state = initialState, action) {
   switch (action.type) {
     case constants.FORM_UPDATE: {
       const label = getLabelToUpdate(
-        Object.keys(state.formData)
-          .sort(),
-        action.label,
+        Object.keys(state.formData).sort(),
+        action.label
       );
       return {
         ...state,
@@ -46,9 +49,9 @@ export default function mainReducer(state = initialState, action) {
           ...state.formData,
           [label]: {
             ...state.formData[label],
-            value: parseInt(action.value, 10),
-          },
-        },
+            value: parseInt(action.value, 10)
+          }
+        }
       };
     }
     default: {
