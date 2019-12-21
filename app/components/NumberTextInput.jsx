@@ -6,6 +6,10 @@ import { numStyle } from '../Styles/style';
 const NumberTextInput = ({ label, value, valueUpdateCB }) => {
   // console.log(label + " " + value + " @ " + valueUpdateCB);
   // Label = mortgage years, value = num, valueUpdateCB = function
+  const any = 'any';
+  const numeric = 'numeric';
+  const done = 'done';
+  const uE = 'unless-editing';
   function removeNonNumericValues(label, value, valueUpdateCB) {
     if (!value) {
       value = 0;
@@ -18,7 +22,6 @@ const NumberTextInput = ({ label, value, valueUpdateCB }) => {
     }
     return valueUpdateCB(label, value);
   }
-
   return (
     <View style={numStyle.numContainer}>
       <TextInput
@@ -27,9 +30,10 @@ const NumberTextInput = ({ label, value, valueUpdateCB }) => {
         onChangeText={(text) => {
           removeNonNumericValues(label, text, valueUpdateCB);
         }}
-        step={0.1}
-        keyboardType="numeric"
-        returnKeyType="done"
+        step={any}
+        keyboardType={numeric}
+        returnKeyType={done}
+        clearButtonMode={uE}
       />
     </View>
   );

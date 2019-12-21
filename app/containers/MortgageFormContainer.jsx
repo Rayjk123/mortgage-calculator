@@ -4,8 +4,9 @@ import { View } from 'react-native';
 import { connect } from 'react-redux';
 import FormLine from '../components/FormLine';
 import TotalContainer from '../components/TotalContainer';
+import AppTitle from '../components/AppTitle';
 import formUpdate from '../actions/index';
-import { bodyStyle } from '../Styles/style';
+import { bodyStyle, wrapper, inputStyle } from '../Styles/style';
 
 const MortgageFormContainer = ({ formData, formUpdate }) => {
   const valueUpdateCB = (label, value) => {
@@ -15,33 +16,39 @@ const MortgageFormContainer = ({ formData, formUpdate }) => {
     }
   };
   function getTotalCost() {
+    const zero = 0;
     const R = formData.interestRate.value / 100 / 12;
-    if (R === 0) return 0; // If interest is 0, results in dividing by 0
+    if (R === 0) return zero.toFixed(2);
     const P = formData.mortgageAmount.value;
     const N = formData.mortgagePeriod.value * 12;
-    if (N === 0) return 0; // If interst is not 0, but years is, results in dividing by 0
+    if (N === 0) return zero.toFixed(2);
     const Numerator = R * P;
     const Denominator = 1 - (1 + R) ** (N * -1);
-    return ((Numerator / Denominator) * N).toFixed(2);
+    return (Numerator / Denominator) * N.toFixed(2);
   }
 
   return (
     <View style={bodyStyle.container}>
-      <FormLine
-        label={formData.mortgageAmount.label}
-        value={formData.mortgageAmount.value}
-        valueUpdateCB={valueUpdateCB}
-      />
-      <FormLine
-        label={formData.interestRate.label}
-        value={formData.interestRate.value}
-        valueUpdateCB={valueUpdateCB}
-      />
-      <FormLine
-        label={formData.mortgagePeriod.label}
-        value={formData.mortgagePeriod.value}
-        valueUpdateCB={valueUpdateCB}
-      />
+      <AppTitle />
+      <View style={wrapper.container}>
+        <View style={inputStyle.container}>
+          <FormLine
+            label={formData.mortgageAmount.label}
+            value={formData.mortgageAmount.value}
+            valueUpdateCB={valueUpdateCB}
+          />
+          <FormLine
+            label={formData.interestRate.label}
+            value={formData.interestRate.value}
+            valueUpdateCB={valueUpdateCB}
+          />
+          <FormLine
+            label={formData.mortgagePeriod.label}
+            value={formData.mortgagePeriod.value}
+            valueUpdateCB={valueUpdateCB}
+          />
+        </View>
+      </View>
       <TotalContainer label={formData.total.label} value={getTotalCost()} />
     </View>
   );
