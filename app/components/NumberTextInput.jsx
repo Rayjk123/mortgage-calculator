@@ -33,7 +33,7 @@ const NumberTextInput = ({ label, value, valueUpdateCB }) => {
         step={any}
         keyboardType={numeric}
         returnKeyType={done}
-        clearButtonMode={unless - editing}
+        clearButtonMode={uE}
       />
     </View>
   );
