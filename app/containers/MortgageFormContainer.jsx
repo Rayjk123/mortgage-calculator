@@ -18,10 +18,10 @@ const MortgageFormContainer = ({ formData, formUpdate }) => {
   function getTotalCost() {
     const zero = 0;
     const R = formData.interestRate.value / 100 / 12;
-    if (R === 0) return zero.toFixed(2); // If interest is 0, results in dividing by 0
+    if (R === 0) return zero.toFixed(2);
     const P = formData.mortgageAmount.value;
     const N = formData.mortgagePeriod.value * 12;
-    if (N === 0) return zero.toFixed(2); // If interst is not 0, but years is, results in dividing by 0
+    if (N === 0) return zero.toFixed(2);
     const Numerator = R * P;
     const Denominator = 1 - (1 + R) ** (N * -1);
     return (Numerator / Denominator) * N.toFixed(2);
