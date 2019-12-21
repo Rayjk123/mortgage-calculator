@@ -23,7 +23,7 @@ const NumberTextInput = ({ label, value, valueUpdateCB }) => {
     <View style={numStyle.numContainer}>
       <TextInput
         style={numStyle.numFont}
-        value={value}
+        value={value.toString()}
         onChangeText={(text) => {
           removeNonNumericValues(label, text, valueUpdateCB);
         }}
