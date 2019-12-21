@@ -4,6 +4,7 @@ import { View, Text } from 'react-native';
 import { totalStyle } from '../Styles/style';
 
 const TotalContainer = ({ label, value }) => {
+  value = parseFloat(value);
   function convertToDollarString(value) {
     const dollar = `$ ${value.toFixed(2).toString()}`;
     return dollar;

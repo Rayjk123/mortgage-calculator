@@ -6,10 +6,10 @@ import { numStyle } from '../Styles/style';
 const NumberTextInput = ({ label, value, valueUpdateCB }) => {
   // console.log(label + " " + value + " @ " + valueUpdateCB);
   // Label = mortgage years, value = num, valueUpdateCB = function
-  var any = 'any';
-  var numeric = 'numeric';
-  var done = 'done';
-  var uE = 'unless-editing';
+  const any = 'any';
+  const numeric = 'numeric';
+  const done = 'done';
+  const uE = 'unless-editing';
   function removeNonNumericValues(label, value, valueUpdateCB) {
     if (!value) {
       value = 0;
