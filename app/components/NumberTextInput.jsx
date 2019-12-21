@@ -18,6 +18,10 @@ const NumberTextInput = ({ label, value, valueUpdateCB }) => {
     }
     return valueUpdateCB(label, value);
   }
+  function clearIfEmpty(value) {
+    if (value == 0) {
+    }
+  }
 
   return (
     <View style={numStyle.numContainer}>
@@ -28,8 +32,10 @@ const NumberTextInput = ({ label, value, valueUpdateCB }) => {
           removeNonNumericValues(label, text, valueUpdateCB);
         }}
         step={0.1}
-        keyboardType="numeric"
-        returnKeyType="done"
+        keyboardType='numeric'
+        returnKeyType='done'
+        clearButtonMode='always'
+        onTouchStart={() => clearIfEmpty(label, value, valueUpdateCB)}
       />
     </View>
   );

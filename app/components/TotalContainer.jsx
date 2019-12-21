@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Text } from 'react-native';
-import { totalStyle, inputStyle } from '../Styles/style';
+import { totalStyle } from '../Styles/style';
 
 const TotalContainer = ({ label, value }) => {
   function convertToDollarString(value) {
-    return '$ ' + value.toString();
+    return '$ ' + value;
   }
 
   return (
