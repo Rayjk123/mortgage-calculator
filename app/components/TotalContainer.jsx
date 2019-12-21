@@ -5,7 +5,8 @@ import { totalStyle } from '../Styles/style';
 
 const TotalContainer = ({ label, value }) => {
   function convertToDollarString(value) {
-    return '$ ' + value;
+    const dollar = `$ ${value.toFixed(2).toString()}`;
+    return dollar;
   }
 
   return (
