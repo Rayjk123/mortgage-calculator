@@ -20,7 +20,7 @@ const MortgageFormContainer = ({ formData, formUpdate }) => {
 		const zero = 0;
 		const R = formData.interestRate.value / 100 / 12;
 		if (R === 0) {
-			return zero.toFixed(2);
+			return zero.toFixed(2)
 		}
 		const P = formData.mortgageAmount.value;
 		const N = formData.mortgagePeriod.value * 12;
