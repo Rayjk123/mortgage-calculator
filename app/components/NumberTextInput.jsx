@@ -10,15 +10,17 @@ const NumberTextInput = ({ label, value, valueUpdateCB }) => {
 	const numeric = 'numeric';
 	const done = 'done';
 	const uE = 'unless-editing';
-	function removeNonNumericValues(label, value, valueUpdateCB) {
-		if (!value) {
-			value = '0';
-		} else {
-			const regexNotNumberOrDot = /[^0-9.]/g;
-			const regexLeadingNumber = /^0+/;
 
-			value = value.replace(regexNotNumberOrDot, '');
-			value = value.replace(regexLeadingNumber, '');
+	const formatValueDisplay = value => {
+		if (!value) {
+			return value;
+    }
+
+		const splitArray = value.split('.');
+		if (splitArray.length > 1 && splitArray[1].length > 2) {
+			return parseFloat(value)
+				.toFixed(2)
+				.toString()
 		}
 		return valueUpdateCB(label, value);
 	}
@@ -34,17 +36,18 @@ const NumberTextInput = ({ label, value, valueUpdateCB }) => {
       return valueUpdateCB(label, '');
     }
   }
+		return value;
+	};
 
 	return (
 		<View style={numStyle.numContainer}>
 			<TextInput
-        value={value}
         onFocus={() => clearInputOnZero(label, value)}
         onEndEditing={() => checkIfBlank(label, value)}
         style={numStyle.numFont}
-				onChangeText={text => {
-					removeNonNumericValues(label, text, valueUpdateCB);
-				}}
+				value={formatValueDisplay(value)}
+				onChangeText={text => valueUpdateCB(label, text)}
+				step={any}
 				keyboardType={numeric}
 				returnKeyType={done}
 				clearButtonMode={uE}

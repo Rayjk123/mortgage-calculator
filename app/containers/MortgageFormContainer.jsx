@@ -6,14 +6,22 @@ import FormLine from '../components/FormLine';
 import TotalContainer from '../components/TotalContainer';
 import AppTitle from '../components/AppTitle';
 import formUpdate from '../actions/index';
-import {MORTGAGE_INTEREST} from '../constants/constants'
+import {
+	formatValueStringToNumber,
+	formatValueStringToInteger
+} from '../util/numberFormat';
 import { bodyStyle, wrapper, inputStyle } from '../styles/style';
 
 const MortgageFormContainer = ({ formData, formUpdate }) => {
-	const valueUpdateCB = (label, value) => {
-		console.log(`Label: ${label} | value: ${value}`);
+	const valueUpdateIntegerCB = (label, value) => {
 		if (!isNaN(value)) {
-			formUpdate(label, value);
+			formUpdate(label, formatValueStringToInteger(value));
+		}
+	};
+
+	const valueUpdateNumberCB = (label, value) => {
+		if (!isNaN(value)) {
+			formUpdate(label, formatValueStringToNumber(value));
 		}
 	};
 
@@ -21,16 +29,16 @@ const MortgageFormContainer = ({ formData, formUpdate }) => {
 		const zero = 0;
 		const R = parseFloat(formData.interestRate.value) / 100 / 12;
 		if (R === 0) {
-			return zero.toFixed(2);
+			return zero;
 		}
 		const P = parseFloat(formData.mortgageAmount.value);
 		const N = parseFloat(formData.mortgagePeriod.value * 12);
 		if (N === 0) {
-			return zero.toFixed(2);
+			return zero;
 		}
 		const Numerator = R * P;
 		const Denominator = 1 - (1 + R) ** (N * -1);
-		return ((Numerator / Denominator) * N).toFixed(2);
+		return (Numerator / Denominator) * N;
 	}
 
 	return (
@@ -41,23 +49,23 @@ const MortgageFormContainer = ({ formData, formUpdate }) => {
 					<FormLine
 						label={formData.mortgageAmount.label}
 						value={formData.mortgageAmount.value}
-						valueUpdateCB={valueUpdateCB}
+						valueUpdateCB={valueUpdateIntegerCB}
 					/>
 					<FormLine
 						label={formData.interestRate.label}
 						value={formData.interestRate.value}
-						valueUpdateCB={valueUpdateCB}
+						valueUpdateCB={valueUpdateNumberCB}
 					/>
 					<FormLine
 						label={formData.mortgagePeriod.label}
 						value={formData.mortgagePeriod.value}
-						valueUpdateCB={valueUpdateCB}
+						valueUpdateCB={valueUpdateIntegerCB}
 					/>
 				</View>
 			</View>
 			<TotalContainer
 				label={formData.total.label}
-				value={getTotalCost()}
+				value={getTotalCost().toString()}
 			/>
 		</View>
 	);

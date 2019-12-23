@@ -8,26 +8,13 @@ const FormLine = ({ label, value, valueUpdateCB }) => {
 	// console.log('VALUE UPDATE CB IN FORM LINE ' + valueUpdateCB);
 	// console.log('VALUE UPDATE CB IN FORM LINE ' + typeof valueUpdateCB);
 
-	const removeNonNumericValues = (label, value) => {
-		if (!value) {
-			value = '0';
-		} else {
-			const regexNotNumberOrDot = /[^0-9.]/g;
-			const regexLeadingNumber = /^0+/;
-
-			value = value.replace(regexNotNumberOrDot, '');
-			value = value.replace(regexLeadingNumber, '');
-		}
-		valueUpdateCB(label, value);
-	};
-
 	return (
 		<View style={inputStyle.inputContainer}>
 			<Text style={inputStyle.textContainer}>{label}</Text>
 			<NumberTextInput
 				label={label}
 				value={value}
-				valueUpdateCB={removeNonNumericValues}
+				valueUpdateCB={valueUpdateCB}
 			/>
 		</View>
 	);
