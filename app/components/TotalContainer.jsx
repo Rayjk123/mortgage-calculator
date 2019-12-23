@@ -24,7 +24,7 @@ const TotalContainer = ({ label, value }) => {
 
 TotalContainer.propTypes = {
 	label: PropTypes.string.isRequired,
-	value: PropTypes.number.isRequired
+	value: PropTypes.string.isRequired
 };
 
 export default TotalContainer;
