@@ -11,10 +11,6 @@ const NumberTextInput = ({ label, value, valueUpdateCB }) => {
 	const done = 'done';
 	const uE = 'unless-editing';
 
-	console.log(
-		`NUMTEXTINPUT: typeof label : ${typeof label} typeof value: ${typeof value}`
-	);
-
 	const formatValueDisplay = value => {
 		if (!value) {
 			return value;

@@ -20,10 +20,6 @@ const FormLine = ({ label, value, valueUpdateCB }) => {
 		valueUpdateCB(label, value);
 	};
 
-	console.log(
-		`FORMLINE: typeof label : ${typeof label} typeof value: ${typeof value}`
-	);
-
 	return (
 		<View style={inputStyle.inputContainer}>
 			<Text style={inputStyle.textContainer}>{label}</Text>
