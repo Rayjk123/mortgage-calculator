@@ -4,19 +4,19 @@ const initialState = {
 	formData: {
 		mortgageAmount: {
 			label: constants.MORTGAGE_AMOUNT,
-			value: 0
+			value: '0'
 		},
 		interestRate: {
 			label: constants.MORTGAGE_INTEREST,
-			value: 0
+			value: '0'
 		},
 		mortgagePeriod: {
 			label: constants.MORTGAGE_YEARS,
-			value: 0
+			value: '0'
 		},
 		total: {
 			label: constants.MORTGAGE_TOTAL_COST,
-			value: 0
+			value: '0'
 		}
 	}
 };
@@ -49,7 +49,7 @@ export default function mainReducer(state = initialState, action) {
 					...state.formData,
 					[label]: {
 						...state.formData[label],
-						value: parseInt(action.value, 10)
+						value: action.value
 					}
 				}
 			};

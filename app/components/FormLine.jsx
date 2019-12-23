@@ -34,7 +34,7 @@ const FormLine = ({ label, value, valueUpdateCB }) => {
 
 FormLine.propTypes = {
 	label: PropTypes.string.isRequired,
-	value: PropTypes.number.isRequired,
+	value: PropTypes.string.isRequired,
 	valueUpdateCB: PropTypes.func.isRequired
 };
 
