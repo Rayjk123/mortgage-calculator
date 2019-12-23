@@ -20,16 +20,16 @@ const MortgageFormContainer = ({ formData, formUpdate }) => {
 		const zero = 0;
 		const R = formData.interestRate.value / 100 / 12;
 		if (R === 0) {
-			return zero.toFixed(2)
+			return zero;
 		}
 		const P = formData.mortgageAmount.value;
 		const N = formData.mortgagePeriod.value * 12;
 		if (N === 0) {
-			return zero.toFixed(2);
+			return zero;
 		}
 		const Numerator = R * P;
 		const Denominator = 1 - (1 + R) ** (N * -1);
-		return (Numerator / Denominator) * N.toFixed(2);
+		return (Numerator / Denominator) * N;
 	}
 
 	return (
@@ -56,7 +56,7 @@ const MortgageFormContainer = ({ formData, formUpdate }) => {
 			</View>
 			<TotalContainer
 				label={formData.total.label}
-				value={getTotalCost()}
+				value={getTotalCost().toString()}
 			/>
 		</View>
 	);
@@ -64,7 +64,7 @@ const MortgageFormContainer = ({ formData, formUpdate }) => {
 
 const formPropType = PropTypes.shape({
 	label: PropTypes.string.isRequired,
-	value: PropTypes.number.isRequired
+	value: PropTypes.string.isRequired
 });
 
 MortgageFormContainer.propTypes = {

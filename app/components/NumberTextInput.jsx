@@ -10,26 +10,28 @@ const NumberTextInput = ({ label, value, valueUpdateCB }) => {
 	const numeric = 'numeric';
 	const done = 'done';
 	const uE = 'unless-editing';
-	function removeNonNumericValues(label, value, valueUpdateCB) {
-		if (!value) {
-			value = 0;
-		} else {
-			const regexNotNumberOrDot = /[^0-9.]/g;
-			const regexLeadingNumber = /^0+/;
 
-			value = value.replace(regexNotNumberOrDot, '');
-			value = value.replace(regexLeadingNumber, '');
+	console.log("NUMTEXTINPUT: typeof label : " + typeof label + " typeof value: " + typeof value);
+
+	const formatValueDisplay = value => {
+		if (!value) {
+			return value;
 		}
-		return valueUpdateCB(label, value);
-	}
+
+		const splitArray = value.split('.');
+		if (splitArray.length > 1 && splitArray[1].length > 2) {
+			return parseFloat(value).toFixed(2).toString();
+		}
+
+		return value;
+	};
+
 	return (
 		<View style={numStyle.numContainer}>
 			<TextInput
 				style={numStyle.numFont}
-				value={value.toString()}
-				onChangeText={text => {
-					removeNonNumericValues(label, text, valueUpdateCB);
-				}}
+				value={formatValueDisplay(value)}
+				onChangeText={text => valueUpdateCB(label, text)}
 				step={any}
 				keyboardType={numeric}
 				returnKeyType={done}
@@ -41,7 +43,7 @@ const NumberTextInput = ({ label, value, valueUpdateCB }) => {
 
 NumberTextInput.propTypes = {
 	label: PropTypes.string.isRequired,
-	value: PropTypes.number.isRequired,
+	value: PropTypes.string.isRequired,
 	valueUpdateCB: PropTypes.func.isRequired
 };
 
