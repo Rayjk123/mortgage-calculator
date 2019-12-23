@@ -6,7 +6,10 @@ import FormLine from '../components/FormLine';
 import TotalContainer from '../components/TotalContainer';
 import AppTitle from '../components/AppTitle';
 import formUpdate from '../actions/index';
-import { formatValueStringToNumber, formatValueStringToInteger } from '../util/numberFormat';
+import {
+	formatValueStringToNumber,
+	formatValueStringToInteger
+} from '../util/numberFormat';
 import { bodyStyle, wrapper, inputStyle } from '../styles/style';
 
 const MortgageFormContainer = ({ formData, formUpdate }) => {
