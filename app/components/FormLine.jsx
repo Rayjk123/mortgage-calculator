@@ -7,9 +7,10 @@ import { inputStyle } from '../styles/style';
 const FormLine = ({ label, value, valueUpdateCB }) => {
 	// console.log('VALUE UPDATE CB IN FORM LINE ' + valueUpdateCB);
 	// console.log('VALUE UPDATE CB IN FORM LINE ' + typeof valueUpdateCB);
+
 	const removeNonNumericValues = (label, value) => {
 		if (!value) {
-			value = 0;
+			value = '0';
 		} else {
 			const regexNotNumberOrDot = /[^0-9.]/g;
 			const regexLeadingNumber = /^0+/;
@@ -34,7 +35,7 @@ const FormLine = ({ label, value, valueUpdateCB }) => {
 
 FormLine.propTypes = {
 	label: PropTypes.string.isRequired,
-	value: PropTypes.number.isRequired,
+	value: PropTypes.string.isRequired,
 	valueUpdateCB: PropTypes.func.isRequired
 };
 

@@ -4,9 +4,8 @@ import { View, Text } from 'react-native';
 import { totalStyle } from '../styles/style';
 
 const TotalContainer = ({ label, value }) => {
-	value = parseFloat(value);
 	function convertToDollarString(value) {
-		const dollar = `$ ${value.toFixed(2).toString()}`;
+		const dollar = `$ ${value}`;
 		return dollar;
 	}
 
@@ -24,7 +23,7 @@ const TotalContainer = ({ label, value }) => {
 
 TotalContainer.propTypes = {
 	label: PropTypes.string.isRequired,
-	value: PropTypes.number.isRequired
+	value: PropTypes.string.isRequired
 };
 
 export default TotalContainer;

@@ -6,6 +6,7 @@ import FormLine from '../components/FormLine';
 import TotalContainer from '../components/TotalContainer';
 import AppTitle from '../components/AppTitle';
 import formUpdate from '../actions/index';
+import {MORTGAGE_INTEREST} from '../constants/constants'
 import { bodyStyle, wrapper, inputStyle } from '../styles/style';
 
 const MortgageFormContainer = ({ formData, formUpdate }) => {
@@ -18,18 +19,18 @@ const MortgageFormContainer = ({ formData, formUpdate }) => {
 
 	function getTotalCost() {
 		const zero = 0;
-		const R = formData.interestRate.value / 100 / 12;
+		const R = parseFloat(formData.interestRate.value) / 100 / 12;
 		if (R === 0) {
 			return zero.toFixed(2);
 		}
-		const P = formData.mortgageAmount.value;
-		const N = formData.mortgagePeriod.value * 12;
+		const P = parseFloat(formData.mortgageAmount.value);
+		const N = parseFloat(formData.mortgagePeriod.value * 12);
 		if (N === 0) {
 			return zero.toFixed(2);
 		}
 		const Numerator = R * P;
 		const Denominator = 1 - (1 + R) ** (N * -1);
-		return (Numerator / Denominator) * N.toFixed(2);
+		return ((Numerator / Denominator) * N).toFixed(2);
 	}
 
 	return (
@@ -64,7 +65,7 @@ const MortgageFormContainer = ({ formData, formUpdate }) => {
 
 const formPropType = PropTypes.shape({
 	label: PropTypes.string.isRequired,
-	value: PropTypes.number.isRequired
+	value: PropTypes.string.isRequired
 });
 
 MortgageFormContainer.propTypes = {
