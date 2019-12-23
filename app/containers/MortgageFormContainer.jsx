@@ -6,13 +6,22 @@ import FormLine from '../components/FormLine';
 import TotalContainer from '../components/TotalContainer';
 import AppTitle from '../components/AppTitle';
 import formUpdate from '../actions/index';
+import {
+	formatValueStringToNumber,
+	formatValueStringToInteger
+} from '../util/numberFormat';
 import { bodyStyle, wrapper, inputStyle } from '../styles/style';
 
 const MortgageFormContainer = ({ formData, formUpdate }) => {
-	const valueUpdateCB = (label, value) => {
-		console.log(`Label: ${label} | value: ${value}`);
+	const valueUpdateIntegerCB = (label, value) => {
 		if (!isNaN(value)) {
-			formUpdate(label, value);
+			formUpdate(label, formatValueStringToInteger(value));
+		}
+	};
+
+	const valueUpdateNumberCB = (label, value) => {
+		if (!isNaN(value)) {
+			formUpdate(label, formatValueStringToNumber(value));
 		}
 	};
 
@@ -40,17 +49,17 @@ const MortgageFormContainer = ({ formData, formUpdate }) => {
 					<FormLine
 						label={formData.mortgageAmount.label}
 						value={formData.mortgageAmount.value}
-						valueUpdateCB={valueUpdateCB}
+						valueUpdateCB={valueUpdateIntegerCB}
 					/>
 					<FormLine
 						label={formData.interestRate.label}
 						value={formData.interestRate.value}
-						valueUpdateCB={valueUpdateCB}
+						valueUpdateCB={valueUpdateNumberCB}
 					/>
 					<FormLine
 						label={formData.mortgagePeriod.label}
 						value={formData.mortgagePeriod.value}
-						valueUpdateCB={valueUpdateCB}
+						valueUpdateCB={valueUpdateIntegerCB}
 					/>
 				</View>
 			</View>
