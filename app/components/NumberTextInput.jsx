@@ -11,7 +11,9 @@ const NumberTextInput = ({ label, value, valueUpdateCB }) => {
 	const done = 'done';
 	const uE = 'unless-editing';
 
-	console.log("NUMTEXTINPUT: typeof label : " + typeof label + " typeof value: " + typeof value);
+	console.log(
+		`NUMTEXTINPUT: typeof label : ${typeof label} typeof value: ${typeof value}`
+	);
 
 	const formatValueDisplay = value => {
 		if (!value) {
@@ -20,7 +22,9 @@ const NumberTextInput = ({ label, value, valueUpdateCB }) => {
 
 		const splitArray = value.split('.');
 		if (splitArray.length > 1 && splitArray[1].length > 2) {
-			return parseFloat(value).toFixed(2).toString();
+			return parseFloat(value)
+				.toFixed(2)
+				.toString();
 		}
 
 		return value;
