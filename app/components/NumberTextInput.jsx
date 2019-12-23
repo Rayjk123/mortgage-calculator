@@ -20,7 +20,7 @@ const NumberTextInput = ({ label, value, valueUpdateCB }) => {
 		if (splitArray.length > 1 && splitArray[1].length > 2) {
 			return parseFloat(value)
 				.toFixed(2)
-				.toString();
+				.toString()
 		}
 
 		return value;
