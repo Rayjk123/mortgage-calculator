@@ -14,15 +14,11 @@ import { bodyStyle, wrapper, inputStyle } from '../styles/style';
 
 const MortgageFormContainer = ({ formData, formUpdate }) => {
 	const valueUpdateIntegerCB = (label, value) => {
-		if (!isNaN(value)) {
-			formUpdate(label, formatValueStringToInteger(value));
-		}
+		formUpdate(label, formatValueStringToInteger(value));
 	};
 
 	const valueUpdateNumberCB = (label, value) => {
-		if (!isNaN(value)) {
-			formUpdate(label, formatValueStringToNumber(value));
-		}
+		formUpdate(label, formatValueStringToNumber(value));
 	};
 
 	function getTotalCost() {

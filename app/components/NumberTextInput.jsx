@@ -20,15 +20,28 @@ const NumberTextInput = ({ label, value, valueUpdateCB }) => {
 		if (splitArray.length > 1 && splitArray[1].length > 2) {
 			return parseFloat(value)
 				.toFixed(2)
-				.toString()
+				.toString();
 		}
 
 		return value;
 	};
+	function removeInputIfZero(label, value) {
+		if (value === '0') {
+			valueUpdateCB(label, '0');
+		}
+	}
+
+	function checkIfBlank(label, value) {
+		if (!value) {
+			valueUpdateCB(label, null);
+		}
+	}
 
 	return (
 		<View style={numStyle.numContainer}>
 			<TextInput
+				onFocus={() => removeInputIfZero(label, value)}
+				onEndEditing={() => checkIfBlank(label, value)}
 				style={numStyle.numFont}
 				value={formatValueDisplay(value)}
 				onChangeText={text => valueUpdateCB(label, text)}
