@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
+import { Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 import FormLine from '../components/FormLine';
 import TotalContainer from '../components/TotalContainer';
@@ -12,7 +13,7 @@ import {
 } from '../util/numberFormat';
 import { bodyStyle, wrapper, inputStyle } from '../styles/style';
 
-const MortgageFormContainer = ({ formData, formUpdate }) => {
+const MortgageFormContainer = ({ formData, formUpdate, navigation }) => {
 	const valueUpdateIntegerCB = (label, value) => {
 		formUpdate(label, formatValueStringToInteger(value));
 	};
@@ -36,6 +37,9 @@ const MortgageFormContainer = ({ formData, formUpdate }) => {
 		const Denominator = 1 - (1 + R) ** (N * -1);
 		return (Numerator / Denominator) * N;
 	}
+
+	console.log(navigation);
+	console.log(typeof navigation);
 
 	return (
 		<View style={bodyStyle.container}>
@@ -63,6 +67,13 @@ const MortgageFormContainer = ({ formData, formUpdate }) => {
 				label={formData.total.label}
 				value={getTotalCost().toString()}
 			/>
+			<Button
+				title="Solid Button"
+				onPress={() => {
+					console.log('working');
+					navigation.navigate('Details');
+				}}
+			/>
 		</View>
 	);
 };
@@ -79,7 +90,10 @@ MortgageFormContainer.propTypes = {
 		mortgagePeriod: formPropType,
 		total: formPropType
 	}).isRequired,
-	formUpdate: PropTypes.func.isRequired
+	formUpdate: PropTypes.func.isRequired,
+	navigation: PropTypes.shape({
+		navigate: PropTypes.func.isRequired
+	}).isRequired
 };
 
 const mapStateToProps = state => {

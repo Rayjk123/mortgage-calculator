@@ -27,6 +27,7 @@ module.exports = {
         "no-shadow": "warn",
         "no-param-reassign": "warn",
         "no-restricted-globals": "warn",
-        curly: [2, "all"]
+        curly: [2, "all"],
+        "react/prop-types": ["error", { "ignore": ["navigation"] }]
     },
 };
