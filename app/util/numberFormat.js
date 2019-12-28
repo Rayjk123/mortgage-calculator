@@ -1,3 +1,5 @@
+import { MAX_TOTAL_LENGTH } from '../constants/constants';
+
 export const formatValueStringToNumber = value => {
 	if (!value) {
 		return '0';
@@ -22,4 +24,13 @@ export const formatValueStringToInteger = value => {
 	value = value.replace(regexLeadingNumber, '');
 
 	return value;
+};
+
+export const totalLimitFormat = value => {
+	value = value.toFixed(2).toString();
+	if (value.length >= MAX_TOTAL_LENGTH) {
+		return 'INVALID AMOUNT';
+	} else {
+		return `$ ${value}`;
+	}
 };

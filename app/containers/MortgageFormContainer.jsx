@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
 import FormLine from '../components/FormLine';
-import TotalContainer from '../components/TotalContainer';
+import TotalContainer from './TotalContainer';
 import AppTitle from '../components/AppTitle';
 import formUpdate from '../actions/index';
 import {
 	formatValueStringToNumber,
 	formatValueStringToInteger
 } from '../util/numberFormat';
+import { MORTGAGE_TITLE } from '../constants/constants';
 import { bodyStyle, wrapper, inputStyle } from '../styles/style';
-
 const MortgageFormContainer = ({ formData, formUpdate }) => {
 	const valueUpdateIntegerCB = (label, value) => {
 		formUpdate(label, formatValueStringToInteger(value));
@@ -37,9 +37,14 @@ const MortgageFormContainer = ({ formData, formUpdate }) => {
 		return (Numerator / Denominator) * N;
 	}
 
+	function getMonthlyCost() {
+		const val = getTotalCost();
+		return val / 10 / 12;
+	}
+
 	return (
 		<View style={bodyStyle.container}>
-			<AppTitle />
+			<AppTitle title={MORTGAGE_TITLE.toString()} />
 			<View style={wrapper.container}>
 				<View style={inputStyle.container}>
 					<FormLine
@@ -60,8 +65,10 @@ const MortgageFormContainer = ({ formData, formUpdate }) => {
 				</View>
 			</View>
 			<TotalContainer
-				label={formData.total.label}
-				value={getTotalCost().toString()}
+				total={formData.total.label}
+				totalValue={getTotalCost().toString()}
+				monthly={formData.monthly.label}
+				monthlyValue={getMonthlyCost().toString()}
 			/>
 		</View>
 	);

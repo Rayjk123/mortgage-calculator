@@ -3,9 +3,9 @@ import { View, Text } from 'react-native';
 import { bodyStyle } from '../styles/style';
 import { MORTGAGE_TITLE } from '../constants/constants';
 
-const ApplicationTitle = () => (
+const ApplicationTitle = ({ title }) => (
 	<View style={bodyStyle.TitleContainer}>
-		<Text style={bodyStyle.Title}>{MORTGAGE_TITLE}</Text>
+		<Text style={bodyStyle.Title}>{title}</Text>
 	</View>
 );
 
