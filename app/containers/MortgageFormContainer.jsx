@@ -38,9 +38,6 @@ const MortgageFormContainer = ({ formData, formUpdate, navigation }) => {
 		return (Numerator / Denominator) * N;
 	}
 
-	console.log(navigation);
-	console.log(typeof navigation);
-
 	return (
 		<View style={bodyStyle.container}>
 			<AppTitle />
