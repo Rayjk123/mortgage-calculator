@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import { totalStyle } from '../styles/style';
 import { totalLimitFormat } from '../util/numberFormat';
-import { ResultLine } from '../components/ResultLine';
-import { ButtonLine } from '../components/ButtonLine';
+import ResultLine from '../components/ResultLine';
+import ButtonLine from '../components/ButtonLine';
 import { MORTGAGE_RESULTS_DETAILS } from '../constants/constants';
+
 const TotalContainer = ({ total, totalValue, monthly, monthlyValue }) => {
 	totalValue = parseFloat(totalValue);
 	monthlyValue = parseFloat(monthlyValue);

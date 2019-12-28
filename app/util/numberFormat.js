@@ -30,7 +30,6 @@ export const totalLimitFormat = value => {
 	value = value.toFixed(2).toString();
 	if (value.length >= MAX_TOTAL_LENGTH) {
 		return 'INVALID AMOUNT';
-	} else {
-		return `$ ${value}`;
 	}
+	return `$ ${value}`;
 };

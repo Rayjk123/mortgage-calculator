@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Text, View, TouchableOpacity } from 'react-native';
 import { totalStyle } from '../styles/style';
 
-export const ButtonLine = ({ title, func }) => {
+const ButtonLine = ({ title, func }) => {
 	return (
 		<View style={totalStyle.textContainer}>
 			<TouchableOpacity onPress={func} style={totalStyle.button}>
@@ -16,3 +16,5 @@ ButtonLine.propTypes = {
 	title: PropTypes.string.isRequired,
 	func: PropTypes.func.isRequired
 };
+
+export default ButtonLine;

@@ -1,12 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View, Text } from 'react-native';
 import { bodyStyle } from '../styles/style';
-import { MORTGAGE_TITLE } from '../constants/constants';
 
-const ApplicationTitle = ({ title }) => (
+const AppTitle = ({ title }) => (
 	<View style={bodyStyle.TitleContainer}>
 		<Text style={bodyStyle.Title}>{title}</Text>
 	</View>
 );
 
-export default ApplicationTitle;
+AppTitle.propTypes = {
+	title: PropTypes.string.isRequired
+};
+export default AppTitle;

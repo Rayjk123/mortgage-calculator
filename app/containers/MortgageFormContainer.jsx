@@ -12,6 +12,7 @@ import {
 } from '../util/numberFormat';
 import { MORTGAGE_TITLE } from '../constants/constants';
 import { bodyStyle, wrapper, inputStyle } from '../styles/style';
+
 const MortgageFormContainer = ({ formData, formUpdate }) => {
 	const valueUpdateIntegerCB = (label, value) => {
 		formUpdate(label, formatValueStringToInteger(value));
@@ -84,7 +85,8 @@ MortgageFormContainer.propTypes = {
 		mortgageAmount: formPropType,
 		interestRate: formPropType,
 		mortgagePeriod: formPropType,
-		total: formPropType
+		total: formPropType,
+		monthly: formPropType
 	}).isRequired,
 	formUpdate: PropTypes.func.isRequired
 };
