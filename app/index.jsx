@@ -1,8 +1,7 @@
-import React from 'react';
-import MortgageFormContainer from './containers/MortgageFormContainer';
-import MortgageDetailsContainer from './containers/MortgageDetailsContainer';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
+import MortgageFormContainer from './containers/MortgageFormContainer';
+import MortgageDetailsContainer from './containers/MortgageDetailsContainer';
 
 const AppNavigator = createStackNavigator(
 	{
@@ -14,4 +13,6 @@ const AppNavigator = createStackNavigator(
 	}
 );
 
-export let Navigation = createAppContainer(AppNavigator);
+const Navigation = createAppContainer(AppNavigator);
+
+export default Navigation;

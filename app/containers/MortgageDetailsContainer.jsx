@@ -5,10 +5,10 @@ import { connect } from 'react-redux';
 import formUpdate from '../actions/index';
 import { bodyStyle } from '../styles/style';
 
-const MortgageDetailsContainer = ({ formData }) => {
+const MortgageDetailsContainer = () => {
 	return (
 		<View style={bodyStyle.container}>
-			<Text>{'Hello'}</Text>
+			<Text>Hello</Text>
 		</View>
 	);
 };
