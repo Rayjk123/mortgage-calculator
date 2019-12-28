@@ -1,6 +1,18 @@
-import React from 'react';
+import { createStackNavigator } from 'react-navigation-stack';
+import { createAppContainer } from 'react-navigation';
 import MortgageFormContainer from './containers/MortgageFormContainer';
+import MortgageDetailsContainer from './containers/MortgageDetailsContainer';
 
-const Application = () => <MortgageFormContainer />;
+const AppNavigator = createStackNavigator(
+	{
+		Home: MortgageFormContainer,
+		Details: MortgageDetailsContainer
+	},
+	{
+		initialRouteName: 'Home'
+	}
+);
 
-export default Application;
+const Navigation = createAppContainer(AppNavigator);
+
+export default Navigation;
