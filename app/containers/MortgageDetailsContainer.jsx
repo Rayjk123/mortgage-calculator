@@ -3,12 +3,16 @@ import PropTypes from 'prop-types';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import formUpdate from '../actions/index';
-import { bodyStyle } from '../styles/style';
-
+import { resultsBodyStyle, bodyStyle } from '../styles/style';
+import ResultsGraph from '../components/ResultsGraph';
+import BaseCalculations from '../components/BaseCalculations';
+import AppTitle from '../components/AppTitle';
+import { MORTGAGE_RESULTS_TITLE } from '../constants/constants';
 const MortgageDetailsContainer = ({ formData }) => {
 	return (
-		<View style={bodyStyle.container}>
-			<Text>{formData.mortgagePeriod.value}</Text>
+		<View style={resultsBodyStyle.container}>
+			<Text style={bodyStyle.ResultsTitle}>{MORTGAGE_RESULTS_TITLE}</Text>
+			<BaseCalculations data={formData} />
 		</View>
 	);
 };

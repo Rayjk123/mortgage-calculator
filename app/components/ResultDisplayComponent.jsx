@@ -11,23 +11,11 @@ const ResultDisplayComponent = ({
 	monthly,
 	monthlyValue
 }) => {
-	totalValue = parseFloat(totalValue);
-	monthlyValue = parseFloat(monthlyValue);
-
-	function convertToDollarString(value) {
-		return totalLimitFormat(value);
-	}
 	return (
 		<View style={totalStyle.wrapper}>
 			<View style={totalStyle.container}>
-				<ResultLine
-					label={total}
-					value={convertToDollarString(totalValue)}
-				/>
-				<ResultLine
-					label={monthly}
-					value={convertToDollarString(monthlyValue)}
-				/>
+				<ResultLine label={total} value={totalValue.toString()} />
+				<ResultLine label={monthly} value={monthlyValue.toString()} />
 			</View>
 		</View>
 	);

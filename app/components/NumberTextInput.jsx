@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { TextInput, View } from 'react-native';
 import { numStyle } from '../styles/style';
-
+import { formatValueDisplay } from '../util/numberFormat';
 const NumberTextInput = ({ label, value, valueUpdateCB }) => {
 	// console.log(label + " " + value + " @ " + valueUpdateCB);
 	// Label = mortgage years, value = num, valueUpdateCB = function
@@ -11,20 +11,6 @@ const NumberTextInput = ({ label, value, valueUpdateCB }) => {
 	const done = 'done';
 	const uE = 'unless-editing';
 
-	const formatValueDisplay = value => {
-		if (!value) {
-			return value;
-		}
-
-		const splitArray = value.split('.');
-		if (splitArray.length > 1 && splitArray[1].length > 2) {
-			return parseFloat(value)
-				.toFixed(2)
-				.toString();
-		}
-
-		return value;
-	};
 	function removeInputIfZero(label, value) {
 		if (value === '0') {
 			valueUpdateCB(label, '0');

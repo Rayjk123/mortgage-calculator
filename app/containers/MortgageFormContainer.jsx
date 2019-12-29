@@ -16,7 +16,7 @@ import {
 	MORTGAGE_RESULTS_DETAILS
 } from '../constants/constants';
 import { bodyStyle, wrapper, inputStyle } from '../styles/style';
-
+import * as MathUtil from '../util/MathUtil';
 const MortgageFormContainer = ({ formData, formUpdate, navigation }) => {
 	const valueUpdateIntegerCB = (label, value) => {
 		formUpdate(label, formatValueStringToInteger(value));
@@ -25,27 +25,6 @@ const MortgageFormContainer = ({ formData, formUpdate, navigation }) => {
 	const valueUpdateNumberCB = (label, value) => {
 		formUpdate(label, formatValueStringToNumber(value));
 	};
-
-	function getTotalCost() {
-		const zero = 0;
-		const R = formData.interestRate.value / 100 / 12;
-		if (R === 0) {
-			return zero;
-		}
-		const P = formData.mortgageAmount.value;
-		const N = formData.mortgagePeriod.value * 12;
-		if (N === 0) {
-			return zero;
-		}
-		const Numerator = R * P;
-		const Denominator = 1 - (1 + R) ** (N * -1);
-		return (Numerator / Denominator) * N;
-	}
-
-	function getMonthlyCost() {
-		const val = getTotalCost();
-		return val / 10 / 12;
-	}
 
 	return (
 		<View style={bodyStyle.container}>
@@ -71,9 +50,9 @@ const MortgageFormContainer = ({ formData, formUpdate, navigation }) => {
 			</View>
 			<ResultDisplayComponent
 				total={formData.total.label}
-				totalValue={getTotalCost().toString()}
+				totalValue={MathUtil.getTotalCost(formData).toString()}
 				monthly={formData.monthly.label}
-				monthlyValue={getMonthlyCost().toString()}
+				monthlyValue={MathUtil.getMonthlyCost(formData).toString()}
 			/>
 			<Button
 				buttonStyle={bodyStyle.button}
