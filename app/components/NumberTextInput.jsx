@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { TextInput, View } from 'react-native';
 import { numStyle } from '../styles/style';
 import { formatValueDisplay } from '../util/numberFormat';
+
 const NumberTextInput = ({ label, value, valueUpdateCB }) => {
 	// console.log(label + " " + value + " @ " + valueUpdateCB);
 	// Label = mortgage years, value = num, valueUpdateCB = function

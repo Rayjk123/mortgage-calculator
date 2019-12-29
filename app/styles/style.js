@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+
 export const resultsBodyStyle = StyleSheet.create({
 	container: {
 		flex: 1,
@@ -12,8 +13,6 @@ export const resultsBodyStyle = StyleSheet.create({
 	},
 	calcContainer: {
 		width: '100%',
-		paddingTop: 15,
-		paddingBottom: 15,
 		display: 'flex',
 		alignItems: 'center',
 		position: 'relative',

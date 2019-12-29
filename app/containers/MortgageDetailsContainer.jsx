@@ -4,10 +4,9 @@ import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import formUpdate from '../actions/index';
 import { resultsBodyStyle, bodyStyle } from '../styles/style';
-import ResultsGraph from '../components/ResultsGraph';
 import BaseCalculations from '../components/BaseCalculations';
-import AppTitle from '../components/AppTitle';
 import { MORTGAGE_RESULTS_TITLE } from '../constants/constants';
+
 const MortgageDetailsContainer = ({ formData }) => {
 	return (
 		<View style={resultsBodyStyle.container}>

@@ -38,8 +38,18 @@ const BaseCalculations = ({ data }) => {
 	);
 };
 
+const formPropType = PropTypes.shape({
+	label: PropTypes.string.isRequired,
+	value: PropTypes.string.isRequired
+});
+
 BaseCalculations.propTypes = {
-	data: PropTypes.object.isRequired
+	formData: PropTypes.shape({
+		mortgageAmount: formPropType,
+		interestRate: formPropType,
+		mortgagePeriod: formPropType,
+		total: formPropType
+	}).isRequired
 };
 
 export default BaseCalculations;

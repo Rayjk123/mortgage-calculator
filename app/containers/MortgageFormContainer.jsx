@@ -17,6 +17,7 @@ import {
 } from '../constants/constants';
 import { bodyStyle, wrapper, inputStyle } from '../styles/style';
 import * as MathUtil from '../util/MathUtil';
+
 const MortgageFormContainer = ({ formData, formUpdate, navigation }) => {
 	const valueUpdateIntegerCB = (label, value) => {
 		formUpdate(label, formatValueStringToInteger(value));

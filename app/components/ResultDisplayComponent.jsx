@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import { totalStyle } from '../styles/style';
-import { totalLimitFormat } from '../util/numberFormat';
 import ResultLine from './ResultLine';
 
 const ResultDisplayComponent = ({

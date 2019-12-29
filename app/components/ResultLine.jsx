@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { View, Text } from 'react-native';
 import { totalStyle } from '../styles/style';
 import { totalLimitFormat } from '../util/numberFormat';
+
 const ResultLine = ({ label, value }) => {
 	return (
 		<View style={totalStyle.textContainer}>
