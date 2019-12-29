@@ -17,18 +17,23 @@ const initialState = {
 		total: {
 			label: constants.MORTGAGE_TOTAL_COST,
 			value: '0'
+		},
+		monthly: {
+			label: constants.MORTGAGE_MONTHLY_PAY,
+			value: '0'
 		}
 	}
 };
 
 function getLabelToUpdate(labelArray, labelStr) {
+	console.log(labelArray);
 	switch (labelStr) {
 		case constants.MORTGAGE_AMOUNT:
-			return labelArray[1];
+			return labelArray[2];
 		case constants.MORTGAGE_INTEREST:
 			return labelArray[0];
 		case constants.MORTGAGE_YEARS:
-			return labelArray[2];
+			return labelArray[3];
 		default:
 			console.log('Nani?');
 			break;

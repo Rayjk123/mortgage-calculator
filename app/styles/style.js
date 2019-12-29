@@ -95,43 +95,58 @@ export const numStyle = StyleSheet.create({
 
 export const totalStyle = StyleSheet.create({
 	container: {
-		display: 'flex',
 		width: '100%',
 		padding: 15,
 		backgroundColor: 'white',
 		shadowRadius: 2,
 		shadowOffset: { width: 0, height: 0 },
 		shadowOpacity: 0.4,
-		flexDirection: 'row'
+		position: 'relative',
+		display: 'flex'
 	},
 	wrapper: {
 		marginTop: 15,
 		width: '90%',
 		display: 'flex',
-		flexDirection: 'row',
 		position: 'relative',
 		backgroundColor: 'white',
 		alignItems: 'center',
 		padding: 20
 	},
-	textLabel: {
+	textContainer: {
+		width: '100%',
 		display: 'flex',
+		flexDirection: 'row',
 		position: 'relative',
-		flexDirection: 'column',
 		paddingTop: 8,
-		paddingBottom: 8,
-		width: '70%',
-		fontSize: 18,
+		paddingBottom: 8
+	},
+	button: {
+		width: '100%',
+		backgroundColor: '#4675FC',
+		padding: 10,
+		borderRadius: 8,
+		alignItems: 'center'
+	},
+	buttonText: {
+		color: 'white',
+		fontWeight: '700',
+		fontSize: 20,
+		letterSpacing: 1
+	},
+	textLabel: {
+		flexDirection: 'column',
+		width: '50%',
+		fontSize: 16,
 		fontWeight: '600'
 	},
 	numFont: {
-		display: 'flex',
-		fontSize: 18,
-		paddingTop: 8,
-		paddingBottom: 8,
+		flexDirection: 'column',
+		fontSize: 16,
 		overflow: 'scroll',
-		width: '30%',
+		width: '50%',
 		color: '#0D1D4B',
-		fontWeight: '700'
+		fontWeight: '700',
+		textAlign: 'right'
 	}
 });
