@@ -12,8 +12,8 @@ export const MORTGAGE_MONTHLY_PAY = 'Monthly';
 
 export const Results = {
 	RESULTS_MONTHLY_PRINCIPAL: 'Monthly Principal',
-	RESULTS_NUMBER_OF_MONTHLY_PAYMENYS: 'Number of Payments',
-	RESULTS_TOTAL_PAYMENTS: 'Total Payments',
+	RESULTS_NUMBER_OF_MONTHLY_PAYMENTS: 'Number of Payments',
+	RESULTS_TOTAL_PAYMENTS: 'Total Principal',
 	RESULTS_ORIGINAL_LOAN_AMOUNT: 'Original Loan Amount'
 };
 

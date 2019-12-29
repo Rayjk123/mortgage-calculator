@@ -4,11 +4,11 @@ import { View, Text } from 'react-native';
 import * as MathUtil from '../util/MathUtil';
 import ResultLine from './ResultLine';
 import { Results } from '../constants/constants';
-import { resultsBodyStyle } from '../styles/style';
+import { resultsBodyStyle, totalStyle } from '../styles/style';
 
 const BaseCalculations = ({ data }) => {
 	const total = MathUtil.getTotalCost(data).toString();
-	const monthly = MathUtil.getTotalCost(data).toString();
+	const monthly = MathUtil.getMonthlyCost(data).toString();
 	const numberOfPayments = MathUtil.getNumberOfPayments(data).toString();
 	return (
 		<View style={resultsBodyStyle.container}>
@@ -20,10 +20,13 @@ const BaseCalculations = ({ data }) => {
 					label={Results.RESULTS_MONTHLY_PRINCIPAL}
 					value={monthly}
 				/>
-				<ResultLine
-					label={Results.RESULTS_NUMBER_OF_MONTHLY_PAYMENYS}
-					value={numberOfPayments}
-				/>
+
+				<View style={totalStyle.textContainer}>
+					<Text style={totalStyle.textLabel}>
+						{Results.RESULTS_NUMBER_OF_MONTHLY_PAYMENTS}
+					</Text>
+					<Text style={totalStyle.numFont}>{numberOfPayments}</Text>
+				</View>
 				<ResultLine
 					label={Results.RESULTS_TOTAL_PAYMENTS}
 					value={total}

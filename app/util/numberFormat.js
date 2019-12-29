@@ -41,7 +41,7 @@ export const formatValueDisplay = value => {
 
 export const totalLimitFormat = value => {
 	value = formatValueDisplay(value.toString());
-	if (value.length === 1 && value === '0') {
+	if (value.length === 1 || value === '0') {
 		value = parseFloat(value)
 			.toFixed(2)
 			.toString();
