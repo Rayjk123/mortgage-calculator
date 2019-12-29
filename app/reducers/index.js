@@ -26,7 +26,6 @@ const initialState = {
 };
 
 function getLabelToUpdate(labelArray, labelStr) {
-	console.log(labelArray);
 	switch (labelStr) {
 		case constants.MORTGAGE_AMOUNT:
 			return labelArray[2];
