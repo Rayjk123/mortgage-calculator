@@ -4,7 +4,7 @@ import { View } from 'react-native';
 import { Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 import FormLine from '../components/FormLine';
-import TotalContainer from './TotalContainer';
+import TotalContainer from '../components/TotalContainer';
 import AppTitle from '../components/AppTitle';
 import formUpdate from '../actions/index';
 import {
