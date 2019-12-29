@@ -5,7 +5,12 @@ import { totalStyle } from '../styles/style';
 import { totalLimitFormat } from '../util/numberFormat';
 import ResultLine from './ResultLine';
 
-const TotalContainer = ({ total, totalValue, monthly, monthlyValue }) => {
+const ResultDisplayComponent = ({
+	total,
+	totalValue,
+	monthly,
+	monthlyValue
+}) => {
 	totalValue = parseFloat(totalValue);
 	monthlyValue = parseFloat(monthlyValue);
 
@@ -28,11 +33,11 @@ const TotalContainer = ({ total, totalValue, monthly, monthlyValue }) => {
 	);
 };
 
-TotalContainer.propTypes = {
+ResultDisplayComponent.propTypes = {
 	total: PropTypes.string.isRequired,
 	totalValue: PropTypes.string.isRequired,
 	monthly: PropTypes.string.isRequired,
 	monthlyValue: PropTypes.string.isRequired
 };
 
-export default TotalContainer;
+export default ResultDisplayComponent;

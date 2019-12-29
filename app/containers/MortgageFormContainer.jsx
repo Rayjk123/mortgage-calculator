@@ -4,7 +4,7 @@ import { View } from 'react-native';
 import { Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 import FormLine from '../components/FormLine';
-import TotalContainer from '../components/TotalContainer';
+import ResultDisplayComponent from '../components/ResultDisplayComponent';
 import AppTitle from '../components/AppTitle';
 import formUpdate from '../actions/index';
 import {
@@ -66,7 +66,7 @@ const MortgageFormContainer = ({ formData, formUpdate, navigation }) => {
 					/>
 				</View>
 			</View>
-			<TotalContainer
+			<ResultDisplayComponent
 				total={formData.total.label}
 				totalValue={getTotalCost().toString()}
 				monthly={formData.monthly.label}
