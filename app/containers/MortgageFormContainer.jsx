@@ -11,7 +11,10 @@ import {
 	formatValueStringToNumber,
 	formatValueStringToInteger
 } from '../util/numberFormat';
-import { MORTGAGE_TITLE } from '../constants/constants';
+import {
+	MORTGAGE_TITLE,
+	MORTGAGE_RESULTS_DETAILS
+} from '../constants/constants';
 import { bodyStyle, wrapper, inputStyle } from '../styles/style';
 
 const MortgageFormContainer = ({ formData, formUpdate, navigation }) => {
@@ -73,10 +76,11 @@ const MortgageFormContainer = ({ formData, formUpdate, navigation }) => {
 				monthlyValue={getMonthlyCost().toString()}
 			/>
 			<Button
-				title="Solid Button"
+				buttonStyle={bodyStyle.button}
+				titleStyle={bodyStyle.buttonTitle}
+				title={MORTGAGE_RESULTS_DETAILS}
 				onPress={() => {
-					console.log('working');
-					navigation.navigate('Details');
+					navigation.navigate('Details', { formData });
 				}}
 			/>
 		</View>

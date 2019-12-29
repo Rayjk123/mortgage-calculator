@@ -27,6 +27,22 @@ export const bodyStyle = StyleSheet.create({
 		position: 'relative',
 		display: 'flex',
 		paddingBottom: 15
+	},
+	button: {
+		marginTop: 15,
+		width: '100%',
+		backgroundColor: '#4675FC',
+		padding: 10,
+		borderRadius: 8,
+		alignItems: 'center',
+		shadowRadius: 2,
+		shadowOffset: { width: 0, height: 0 },
+		shadowOpacity: 0.4
+	},
+	buttonTitle: {
+		fontSize: 20,
+		fontWeight: '700',
+		color: 'white'
 	}
 });
 export const wrapper = StyleSheet.create({
