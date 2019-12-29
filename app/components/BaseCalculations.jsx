@@ -44,7 +44,7 @@ const formPropType = PropTypes.shape({
 });
 
 BaseCalculations.propTypes = {
-	formData: PropTypes.shape({
+	data: PropTypes.shape({
 		mortgageAmount: formPropType,
 		interestRate: formPropType,
 		mortgagePeriod: formPropType,

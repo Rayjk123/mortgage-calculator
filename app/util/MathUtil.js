@@ -2,12 +2,12 @@ const zero = 0;
 
 export function getTotalCost(formData) {
 	const R = parseFloat(formData.interestRate.value) / 100 / 12;
-	if (R === 0 || isNaN(R)) {
+	if (R === 0) {
 		return zero;
 	}
 	const P = parseFloat(formData.mortgageAmount.value);
 	const N = parseFloat(formData.mortgagePeriod.value) * 12;
-	if (N === 0 || isNaN(N)) {
+	if (N === 0) {
 		return zero;
 	}
 	const Numerator = R * P;
@@ -17,7 +17,7 @@ export function getTotalCost(formData) {
 
 export function getMonthlyCost(formData) {
 	const period = parseFloat(formData.mortgagePeriod.value);
-	if (period === 0 || isNaN(period)) {
+	if (isNaN(period) || period === 0) {
 		return zero;
 	}
 	const val = getTotalCost(formData);
