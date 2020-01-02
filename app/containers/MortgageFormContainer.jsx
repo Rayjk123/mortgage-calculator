@@ -5,14 +5,17 @@ import { Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 import FormLine from '../components/FormLine';
 import ResultDisplayComponent from '../components/ResultDisplayComponent';
-import AppTitle from '../components/AppTitle';
 import formUpdate from '../actions/index';
 import {
 	formatValueStringToNumber,
 	formatValueStringToInteger
 } from '../util/numberFormat';
-import { MORTGAGE_TITLE } from '../constants/constants';
+import {
+	MORTGAGE_TITLE,
+	MORTGAGE_RESULTS_DETAILS
+} from '../constants/constants';
 import { bodyStyle, wrapper, inputStyle } from '../styles/style';
+import * as MathUtil from '../util/MathUtil';
 
 const MortgageFormContainer = ({ formData, formUpdate, navigation }) => {
 	const valueUpdateIntegerCB = (label, value) => {
@@ -23,30 +26,8 @@ const MortgageFormContainer = ({ formData, formUpdate, navigation }) => {
 		formUpdate(label, formatValueStringToNumber(value));
 	};
 
-	function getTotalCost() {
-		const zero = 0;
-		const R = formData.interestRate.value / 100 / 12;
-		if (R === 0) {
-			return zero;
-		}
-		const P = formData.mortgageAmount.value;
-		const N = formData.mortgagePeriod.value * 12;
-		if (N === 0) {
-			return zero;
-		}
-		const Numerator = R * P;
-		const Denominator = 1 - (1 + R) ** (N * -1);
-		return (Numerator / Denominator) * N;
-	}
-
-	function getMonthlyCost() {
-		const val = getTotalCost();
-		return val / 10 / 12;
-	}
-
 	return (
 		<View style={bodyStyle.container}>
-			<AppTitle title={MORTGAGE_TITLE.toString()} />
 			<View style={wrapper.container}>
 				<View style={inputStyle.container}>
 					<FormLine
@@ -68,19 +49,24 @@ const MortgageFormContainer = ({ formData, formUpdate, navigation }) => {
 			</View>
 			<ResultDisplayComponent
 				total={formData.total.label}
-				totalValue={getTotalCost().toString()}
+				totalValue={MathUtil.getTotalCost(formData).toString()}
 				monthly={formData.monthly.label}
-				monthlyValue={getMonthlyCost().toString()}
+				monthlyValue={MathUtil.getMonthlyCost(formData).toString()}
 			/>
 			<Button
-				title="Solid Button"
+				buttonStyle={bodyStyle.button}
+				titleStyle={bodyStyle.buttonTitle}
+				title={MORTGAGE_RESULTS_DETAILS}
 				onPress={() => {
-					console.log('working');
-					navigation.navigate('Details');
+					navigation.navigate('Details', { formData });
 				}}
 			/>
 		</View>
 	);
+};
+
+MortgageFormContainer.navigationOptions = {
+	title: MORTGAGE_TITLE
 };
 
 const formPropType = PropTypes.shape({

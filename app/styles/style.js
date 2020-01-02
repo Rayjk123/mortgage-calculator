@@ -1,5 +1,37 @@
 import { StyleSheet } from 'react-native';
 
+export const resultsBodyStyle = StyleSheet.create({
+	container: {
+		flex: 1,
+		width: '100%',
+		paddingTop: 15,
+		paddingBottom: 15,
+		paddingLeft: 6,
+		paddingRight: 6,
+		alignItems: 'center',
+		position: 'relative'
+	},
+	calcContainer: {
+		width: '100%',
+		display: 'flex',
+		alignItems: 'center',
+		position: 'relative',
+		paddingBottom: 4,
+		paddingTop: 4,
+		borderTopWidth: 0.5,
+		borderLeftWidth: 0,
+		borderRightWidth: 0,
+		borderBottomWidth: 0.5,
+		borderStyle: 'solid',
+		borderColor: 'gray'
+	},
+	baseTitleText: {
+		textAlign: 'left',
+		width: '100%',
+		fontSize: 16,
+		paddingBottom: 8
+	}
+});
 export const bodyStyle = StyleSheet.create({
 	container: {
 		flex: 1,
@@ -22,11 +54,40 @@ export const bodyStyle = StyleSheet.create({
 		width: '100%',
 		textAlign: 'center'
 	},
+	ResultsTitle: {
+		color: 'black',
+		fontSize: 30,
+		fontWeight: '700',
+		width: '100%',
+		textAlign: 'center'
+	},
 	TitleContainer: {
 		width: '100%',
 		position: 'relative',
 		display: 'flex',
 		paddingBottom: 15
+	},
+	button: {
+		width: '100%',
+		marginTop: 15,
+		backgroundColor: '#98B3FF',
+		padding: 10,
+		alignItems: 'center',
+		borderRadius: 8,
+		borderTopColor: 'blue',
+		borderRightColor: '#111B38',
+		borderLeftColor: '#111B38',
+		borderBottomColor: 'blue',
+		borderStyle: 'solid',
+		borderWidth: 1.5
+	},
+	buttonTitle: {
+		fontSize: 20,
+		fontWeight: '700',
+		color: 'white',
+		shadowRadius: 2,
+		shadowOffset: { width: 0, height: 0 },
+		shadowOpacity: 0.4
 	}
 });
 export const wrapper = StyleSheet.create({
@@ -148,5 +209,12 @@ export const totalStyle = StyleSheet.create({
 		color: '#0D1D4B',
 		fontWeight: '700',
 		textAlign: 'right'
+	}
+});
+
+export const Chart = StyleSheet.create({
+	resultsChart: {
+		height: 300,
+		width: '100%'
 	}
 });
