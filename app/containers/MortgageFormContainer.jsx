@@ -5,7 +5,6 @@ import { Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 import FormLine from '../components/FormLine';
 import ResultDisplayComponent from '../components/ResultDisplayComponent';
-import AppTitle from '../components/AppTitle';
 import formUpdate from '../actions/index';
 import {
 	formatValueStringToNumber,
