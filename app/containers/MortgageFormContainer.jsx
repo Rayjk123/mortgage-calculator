@@ -28,24 +28,22 @@ const MortgageFormContainer = ({ formData, formUpdate, navigation }) => {
 
 	return (
 		<View style={bodyStyle.container}>
-			<View style={wrapper.container}>
-				<View style={inputStyle.container}>
-					<FormLine
-						label={formData.mortgageAmount.label}
-						value={formData.mortgageAmount.value}
-						valueUpdateCB={valueUpdateIntegerCB}
-					/>
-					<FormLine
-						label={formData.interestRate.label}
-						value={formData.interestRate.value}
-						valueUpdateCB={valueUpdateNumberCB}
-					/>
-					<FormLine
-						label={formData.mortgagePeriod.label}
-						value={formData.mortgagePeriod.value}
-						valueUpdateCB={valueUpdateIntegerCB}
-					/>
-				</View>
+			<View style={inputStyle.container}>
+				<FormLine
+					label={formData.mortgageAmount.label}
+					value={formData.mortgageAmount.value}
+					valueUpdateCB={valueUpdateIntegerCB}
+				/>
+				<FormLine
+					label={formData.interestRate.label}
+					value={formData.interestRate.value}
+					valueUpdateCB={valueUpdateNumberCB}
+				/>
+				<FormLine
+					label={formData.mortgagePeriod.label}
+					value={formData.mortgagePeriod.value}
+					valueUpdateCB={valueUpdateIntegerCB}
+				/>
 			</View>
 			<ResultDisplayComponent
 				total={formData.total.label}

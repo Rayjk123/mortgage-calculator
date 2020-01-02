@@ -1,18 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, Text } from 'react-native';
+import { ScrollView, Text } from 'react-native';
 import { connect } from 'react-redux';
 import formUpdate from '../actions/index';
 import { resultsBodyStyle, bodyStyle } from '../styles/style';
 import BaseCalculations from '../components/BaseCalculations';
 import { MORTGAGE_RESULTS_TITLE } from '../constants/constants';
-
+import ResultsGraph from '../components/ResultsGraph';
 const MortgageDetailsContainer = ({ formData }) => {
 	return (
-		<View style={resultsBodyStyle.container}>
+		<ScrollView style={resultsBodyStyle.container}>
 			<Text style={bodyStyle.ResultsTitle}>{MORTGAGE_RESULTS_TITLE}</Text>
 			<BaseCalculations data={formData} />
-		</View>
+			<ResultsGraph formData={formData} />
+		</ScrollView>
 	);
 };
 
