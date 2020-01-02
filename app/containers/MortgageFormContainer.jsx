@@ -29,7 +29,6 @@ const MortgageFormContainer = ({ formData, formUpdate, navigation }) => {
 
 	return (
 		<View style={bodyStyle.container}>
-			<AppTitle title={MORTGAGE_TITLE.toString()} />
 			<View style={wrapper.container}>
 				<View style={inputStyle.container}>
 					<FormLine
@@ -65,6 +64,10 @@ const MortgageFormContainer = ({ formData, formUpdate, navigation }) => {
 			/>
 		</View>
 	);
+};
+
+MortgageFormContainer.navigationOptions = {
+	title: MORTGAGE_TITLE
 };
 
 const formPropType = PropTypes.shape({

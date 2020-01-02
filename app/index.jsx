@@ -5,12 +5,7 @@ import MortgageDetailsContainer from './containers/MortgageDetailsContainer';
 
 const AppNavigator = createStackNavigator(
 	{
-		Home: {
-			screen: MortgageFormContainer,
-			navigationOptions: {
-				header: null
-			}
-		},
+		Home: MortgageFormContainer,
 		Details: MortgageDetailsContainer
 	},
 	{
