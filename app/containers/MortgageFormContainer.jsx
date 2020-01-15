@@ -14,7 +14,7 @@ import {
 	MORTGAGE_TITLE,
 	MORTGAGE_RESULTS_DETAILS
 } from '../constants/constants';
-import { bodyStyle, wrapper, inputStyle } from '../styles/style';
+import { bodyStyle, inputStyle } from '../styles/style';
 import * as MathUtil from '../util/MathUtil';
 
 const MortgageFormContainer = ({ formData, formUpdate, navigation }) => {

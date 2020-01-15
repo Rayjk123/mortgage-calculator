@@ -9,6 +9,9 @@ export const resultsBodyStyle = StyleSheet.create({
 		paddingRight: 6,
 		position: 'relative'
 	},
+	yaxis: {
+		fontSize: 12
+	},
 	calcContainer: {
 		width: '100%',
 		display: 'flex',
@@ -69,19 +72,14 @@ export const bodyStyle = StyleSheet.create({
 	button: {
 		width: '100%',
 		marginTop: 15,
-		backgroundColor: 'transparent',
 		padding: 10,
 		alignItems: 'center',
-		borderRadius: 8,
 		position: 'relative',
 		display: 'flex',
 		flexDirection: 'row',
-		shadowRadius: 8,
-		shadowOffset: { width: 0, height: 0 },
-		shadowOpacity: 1,
-		borderColor: '#8FCCFF',
-		borderWidth: 1,
+		backgroundColor: '#8FCCFF',
 		overflow: 'hidden',
+		borderRadius: 8,
 		shadowColor: '#113656'
 	},
 	buttonTitle: {
@@ -89,9 +87,9 @@ export const bodyStyle = StyleSheet.create({
 		fontWeight: '800',
 		letterSpacing: 1,
 		color: 'white',
-		shadowRadius: 0,
+		shadowRadius: 0.5,
 		shadowOffset: { width: 0, height: 0 },
-		shadowOpacity: 0.4,
+		shadowOpacity: 1,
 		shadowColor: 'black'
 	}
 });

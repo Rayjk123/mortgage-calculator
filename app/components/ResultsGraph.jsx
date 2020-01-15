@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
-import { resultsBodyStyle } from '../styles/style';
+import { StackedBarChart, YAxis, XAxis, Grid } from 'react-native-svg-charts';
+import { curveNatural } from 'd3-shape';
 import * as MathUtil from '../util/MathUtil';
-import { StackedAreaChart, YAxis, Grid } from 'react-native-svg-charts';
-import * as shape from 'd3-shape';
 
 const ResultsGraph = ({ formData }) => {
 	function getData() {
 		const pieData = [];
 		const date = new Date();
-		let currentYear = parseInt(date.getFullYear());
-		const maxYear = parseInt(formData.mortgagePeriod.value) + currentYear;
+		let currentYear = parseInt(date.getFullYear(), 10);
+		const maxYear =
+			parseInt(formData.mortgagePeriod.value, 10) + currentYear;
 		let balance = MathUtil.getTotalCost(formData);
 		let paid = 0;
 		const yearlyPrincipal = MathUtil.getMonthlyCost(formData) * 12;
@@ -21,15 +21,46 @@ const ResultsGraph = ({ formData }) => {
 				balance: balance.toFixed(2),
 				paid: paid.toFixed(2)
 			});
-			balance = balance - yearlyPrincipal;
+			balance -= yearlyPrincipal;
 
-			paid = paid + yearlyPrincipal;
-			currentYear++;
+			paid += yearlyPrincipal;
+			currentYear += 1;
 		}
 		return pieData;
 	}
+	function getYAxisData() {
+		const Data = getData();
+		const yAxisData = [];
+		Object.keys(Data).forEach(function(key) {
+			yAxisData.push(parseFloat(Data[key].balance));
+		});
+		return yAxisData;
+	}
+
+	function getXAxisData() {
+		const Data = getData();
+		const xAxisData = [];
+		Object.keys(Data).forEach(function(key) {
+			xAxisData.push(parseFloat(Data[key].year));
+		});
+		return xAxisData;
+	}
+
+	function getXAxisValue(key) {
+		const Data = getData();
+		return Data[Math.round(key)].year;
+	}
+
+	// NEED TO MAKE THIS BETTER
+	function getTicks() {
+		const Data = getData();
+		if (Data.length <= 5) {
+			return Data.length;
+		}
+		return parseInt(Data.length / 5, 10);
+	}
 	function getColors() {
-		const length = parseInt(formData.mortgagePeriod.value);
+		/* const length = parseInt(formData.mortgagePeriod.value);
 		const randomColor = () =>
 			(
 				'#' +
@@ -39,35 +70,57 @@ const ResultsGraph = ({ formData }) => {
 		const colors = [];
 		for (let i = 0; i < length; i++) {
 			colors.push(randomColor());
-		}
+		} */
+		const colors = ['#202b35', '#00aeef'];
 		return colors;
 	}
 	function getKeys() {
-		return ['year', 'balance', 'paid'];
+		return ['balance', 'paid'];
 	}
 	return (
-		<View style={resultsBodyStyle.container}>
-			<StackedAreaChart
-				contentInset={{ top: 10, bottom: 10 }}
-				data={getData()}
-				keys={getKeys()}
-				colors={getColors()}
-				curve={shape.curveNatural}
-			>
-				<Grid />
-			</StackedAreaChart>
-			<YAxis
-				style={{ position: 'absolute', top: 0, bottom: 0 }}
-				data={StackedAreaChart.extractDataPoints(data, keys)}
-				contentInset={{ top: 10, bottom: 10 }}
-				svg={{
-					fontSize: 8,
-					fill: 'white',
-					stroke: 'black',
-					strokeWidth: 0.1,
-					alignmentBaseline: 'baseline',
-					baselineShift: '3'
+		<View
+			style={{
+				flex: 1
+			}}
+		>
+			<View
+				style={{
+					height: 250,
+					flexDirection: 'row'
 				}}
+			>
+				<YAxis
+					style={{ width: '15%', padding: 0 }}
+					contentInset={{ top: 10, bottom: 10 }}
+					data={getYAxisData()}
+					svg={{ fill: 'black', fontSize: 10 }}
+					numberOfTicks={10}
+					formatLabel={value => `$${value}`}
+				/>
+				<StackedBarChart
+					contentInset={{ top: 10, bottom: 10 }}
+					style={{ flex: 1 }}
+					data={getData()}
+					keys={getKeys()}
+					colors={getColors()}
+					curve={curveNatural}
+				>
+					<Grid />
+				</StackedBarChart>
+			</View>
+			<XAxis
+				style={{
+					flexDirection: 'row',
+					flex: 1,
+					position: 'absolute',
+					bottom: -10,
+					paddingLeft: '15%'
+				}}
+				contentInset={{ left: 15, right: 15 }}
+				data={getXAxisData()}
+				svg={{ fill: 'black', fontSize: 10 }}
+				numberOfTicks={getTicks()}
+				formatLabel={value => getXAxisValue(value)}
 			/>
 		</View>
 	);
