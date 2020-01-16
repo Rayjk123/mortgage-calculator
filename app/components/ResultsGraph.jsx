@@ -62,17 +62,16 @@ const ResultsGraph = ({ formData }) => {
 	function getColors() {
 		/* const length = parseInt(formData.mortgagePeriod.value);
 		const randomColor = () =>
-			(
-				'#' +
-				((Math.random() * 0xffffff) << 0).toString(16) +
-				'000000'
-			).slice(0, 7);
+			`#${((Math.random() * 0xffffff) << 0).toString(16)}000000`.slice(
+				0,
+				7
+			);
 		const colors = [];
 		for (let i = 0; i < length; i++) {
 			colors.push(randomColor());
 		} */
-		const colors = ['#202b35', '#00aeef'];
-		return colors;
+		const barColors = ['#202b35', '#00aeef'];
+		return barColors;
 	}
 	function getKeys() {
 		return ['balance', 'paid'];
@@ -104,6 +103,8 @@ const ResultsGraph = ({ formData }) => {
 					keys={getKeys()}
 					colors={getColors()}
 					curve={curveNatural}
+					animation
+					animationDuration={300}
 				>
 					<Grid />
 				</StackedBarChart>
