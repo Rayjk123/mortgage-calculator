@@ -74,7 +74,7 @@ const ResultsGraph = ({ formData }) => {
 		return barColors;
 	}
 	function getKeys() {
-		return ['balance', 'paid'];
+		return ['paid', 'balance'];
 	}
 	return (
 		<View

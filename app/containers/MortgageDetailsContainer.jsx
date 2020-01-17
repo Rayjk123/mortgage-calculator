@@ -25,7 +25,7 @@ const MortgageDetailsContainer = ({ formData }) => {
 					style={{
 						fontWeight: '700',
 						fontSize: 14,
-						color: '#202b35'
+						color: '#00aeef'
 					}}
 				>
 					Balance
@@ -35,7 +35,7 @@ const MortgageDetailsContainer = ({ formData }) => {
 						marginLeft: 10,
 						fontWeight: '700',
 						fontSize: 14,
-						color: '#00aeef'
+						color: '#202b35'
 					}}
 				>
 					Paid
