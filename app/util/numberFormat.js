@@ -39,17 +39,12 @@ export const formatValueDisplay = value => {
 	return value;
 };
 
-const addCommaToValue = value => {
-	return value.replace(/(?<=\d)(?=(\d\d\d)+(?!\d))/g, ',');
-};
-
 export const totalLimitFormat = value => {
 	value = formatValueDisplay(value.toString());
 	if (value.length === 1 || value === '0') {
 		value = parseFloat(value)
 			.toFixed(2)
 			.toString();
-		value = addCommaToValue(value);
 	}
 	if (value.length >= MAX_TOTAL_LENGTH) {
 		return 'INVALID AMOUNT';
