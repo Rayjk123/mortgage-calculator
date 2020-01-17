@@ -2,14 +2,15 @@ import { StyleSheet } from 'react-native';
 
 export const resultsBodyStyle = StyleSheet.create({
 	container: {
-		flex: 1,
 		width: '100%',
 		paddingTop: 15,
 		paddingBottom: 15,
 		paddingLeft: 6,
 		paddingRight: 6,
-		alignItems: 'center',
 		position: 'relative'
+	},
+	yaxis: {
+		fontSize: 12
 	},
 	calcContainer: {
 		width: '100%',
@@ -36,9 +37,10 @@ export const bodyStyle = StyleSheet.create({
 	container: {
 		flex: 1,
 		backgroundColor: '#697DBA',
-		alignItems: 'center',
-		paddingTop: '10%',
-		position: 'relative'
+		display: 'flex',
+		justifyContent: 'center',
+		paddingLeft: 20,
+		paddingRight: 20
 	},
 	marginBottom: {
 		marginBottom: 20
@@ -70,34 +72,35 @@ export const bodyStyle = StyleSheet.create({
 	button: {
 		width: '100%',
 		marginTop: 15,
-		backgroundColor: '#98B3FF',
 		padding: 10,
 		alignItems: 'center',
+		position: 'relative',
+		display: 'flex',
+		flexDirection: 'row',
+		backgroundColor: '#8FCCFF',
+		overflow: 'hidden',
 		borderRadius: 8,
-		borderTopColor: 'blue',
-		borderRightColor: '#111B38',
-		borderLeftColor: '#111B38',
-		borderBottomColor: 'blue',
-		borderStyle: 'solid',
-		borderWidth: 1.5
+		shadowColor: '#113656'
 	},
 	buttonTitle: {
 		fontSize: 20,
-		fontWeight: '700',
+		fontWeight: '800',
+		letterSpacing: 1,
 		color: 'white',
-		shadowRadius: 2,
+		shadowRadius: 0.5,
 		shadowOffset: { width: 0, height: 0 },
-		shadowOpacity: 0.4
+		shadowOpacity: 1,
+		shadowColor: 'black'
 	}
 });
 export const wrapper = StyleSheet.create({
 	container: {
-		width: '90%',
+		width: '100%',
 		display: 'flex',
 		position: 'relative',
-		alignItems: 'center',
 		padding: 20,
-		backgroundColor: 'white'
+		backgroundColor: 'white',
+		borderRadius: 8
 	}
 });
 export const inputStyle = StyleSheet.create({
@@ -109,9 +112,11 @@ export const inputStyle = StyleSheet.create({
 		paddingRight: 15,
 		paddingBottom: 0,
 		backgroundColor: 'white',
-		shadowRadius: 2,
+		shadowRadius: 4,
 		shadowOffset: { width: 0, height: 0 },
-		shadowOpacity: 0.4
+		shadowOpacity: 1,
+		shadowColor: 'white',
+		borderRadius: 8
 	},
 	inputContainer: {
 		position: 'relative',
@@ -159,20 +164,19 @@ export const totalStyle = StyleSheet.create({
 		width: '100%',
 		padding: 15,
 		backgroundColor: 'white',
-		shadowRadius: 2,
+		shadowRadius: 5,
 		shadowOffset: { width: 0, height: 0 },
-		shadowOpacity: 0.4,
+		shadowOpacity: 1,
+		shadowColor: 'white',
 		position: 'relative',
-		display: 'flex'
+		display: 'flex',
+		borderRadius: 8
 	},
 	wrapper: {
 		marginTop: 15,
-		width: '90%',
-		display: 'flex',
-		position: 'relative',
+		width: '100%',
 		backgroundColor: 'white',
-		alignItems: 'center',
-		padding: 20
+		borderRadius: 8
 	},
 	textContainer: {
 		width: '100%',

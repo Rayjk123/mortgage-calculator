@@ -36,7 +36,6 @@ const BaseCalculations = ({ data }) => {
 					value={data.mortgageAmount.value}
 				/>
 			</View>
-			<Text>Graph here?</Text>
 		</View>
 	);
 };

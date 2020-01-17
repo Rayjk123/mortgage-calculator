@@ -1,19 +1,53 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, Text } from 'react-native';
+import { ScrollView, View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import formUpdate from '../actions/index';
-import { resultsBodyStyle, bodyStyle } from '../styles/style';
+import { resultsBodyStyle } from '../styles/style';
 import BaseCalculations from '../components/BaseCalculations';
 import { MORTGAGE_RESULTS_TITLE } from '../constants/constants';
+import ResultsGraph from '../components/ResultsGraph';
 
 const MortgageDetailsContainer = ({ formData }) => {
 	return (
-		<View style={resultsBodyStyle.container}>
-			<Text style={bodyStyle.ResultsTitle}>{MORTGAGE_RESULTS_TITLE}</Text>
+		<ScrollView style={resultsBodyStyle.container}>
 			<BaseCalculations data={formData} />
-		</View>
+			<View
+				style={{
+					alignItems: 'center',
+					position: 'relative',
+					display: 'flex',
+					justifyContent: 'center',
+					flexDirection: 'row'
+				}}
+			>
+				<Text
+					style={{
+						fontWeight: '700',
+						fontSize: 14,
+						color: '#00aeef'
+					}}
+				>
+					Balance
+				</Text>
+				<Text
+					style={{
+						marginLeft: 10,
+						fontWeight: '700',
+						fontSize: 14,
+						color: '#202b35'
+					}}
+				>
+					Paid
+				</Text>
+			</View>
+			<ResultsGraph formData={formData} />
+		</ScrollView>
 	);
+};
+
+MortgageDetailsContainer.navigationOptions = {
+	title: MORTGAGE_RESULTS_TITLE
 };
 
 const formPropType = PropTypes.shape({
