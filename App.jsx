@@ -8,7 +8,7 @@ const store = createStore(mainReducer);
 
 const App = () => (
 	<Provider store={store}>
-		<Navigation />
+	    <Navigation />
 	</Provider>
 );
 
