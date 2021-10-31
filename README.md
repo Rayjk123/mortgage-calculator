@@ -14,3 +14,6 @@ Console.logs will show up in terminal. Hot refresh on saves
 ## ESLint
 The project enforces ESLint. To validate that your ESLint is correct run `npm run eslint` to validate 
 and if you want to autofix some basic issues use `npm run eslint-fix`
+
+## Here's this extra that you didn't about
+I like to run around.
